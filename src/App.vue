@@ -3,7 +3,9 @@ import AppHeader from "@/components/AppHeader/AppHeader.vue";
 </script>
 
 <template>
-  <AppHeader />
+  <v-app>
+    <AppHeader />
+  </v-app>
 
 </template>
 
