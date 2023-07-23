@@ -31,8 +31,7 @@ import banner from "@/assets/banner.jpg";
 export default {
   methods: {
     navigateToDepressionTest() {
-      // Handle button click event
-      // Add your logic here
+      this.$router.push("/depression-test");
     }
   },
   data() {
