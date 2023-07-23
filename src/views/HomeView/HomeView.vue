@@ -19,7 +19,7 @@
         @click="navigateToDepressionTest"
         color="primary"
       >
-        Take Depression Test
+        Take Mood Assessment Quiz
       </v-btn>
     </div>
   </v-img>
@@ -31,7 +31,7 @@ import banner from "@/assets/banner.jpg";
 export default {
   methods: {
     navigateToDepressionTest() {
-      this.$router.push("/depression-test");
+      this.$router.push("/quiz");
     }
   },
   data() {
