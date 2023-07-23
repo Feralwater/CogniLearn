@@ -1,5 +1,6 @@
 <template>
-    <header class="header-container">
+  <header>
+    <div class="header-container">
       <div class="header-logo">
         <v-img :src="logoIcon" height="64" width="80" />
         <span class="project-name black">mind</span>
@@ -27,7 +28,21 @@
           </div>
         </div>
       </div>
-    </header>
+    </div>
+    <nav class="header-navigation">
+      <ul class="header-navigation-list header-container">
+        <li class="header-navigation-item">
+          <router-link to="/" class="header-link">Home</router-link>
+        </li>
+        <li class="header-navigation-item">
+          <router-link to="/about" class="header-link">About</router-link>
+        </li>
+        <li class="header-navigation-item">
+          <router-link to="/contact" class="header-link">Contact</router-link>
+        </li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <style>

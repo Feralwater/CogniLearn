@@ -65,3 +65,25 @@
     justify-content: center;
   }
 }
+
+.header-navigation {
+  width: 100%;
+  background-color: var(--vt-c-green);
+}
+
+.header-navigation-list {
+  list-style-type: none;
+  padding: 0 15px;
+}
+
+.header-navigation-item {
+  display: inline-block;
+  padding: 15px 0;
+  text-transform: uppercase;
+}
+
+.header-link {
+  color: var(--vt-c-white);
+  text-decoration: none;
+  font-weight: 500;
+}
