@@ -20,6 +20,8 @@
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
   --vt-c-green: #14A09D;
+  --vt-c-green-soft: rgba(20, 160, 157, 0.3);
+  --vt-c-green-mute: #098583;
 }
 
 /* semantic color variables for this project */

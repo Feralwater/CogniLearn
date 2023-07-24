@@ -1,0 +1,76 @@
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-header {
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.question-title {
+  white-space: break-spaces;
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-card {
+  border: 1px solid var(--vt-c-divider-light-1);
+  border-radius: 4px;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.radio-card:hover {
+  background-color: var(--vt-c-green-soft);
+}
+
+.radio-card-selected {
+  background-color: var(--vt-c-green);
+  color: white;
+  border-color: var(--vt-c-green);
+}
+
+.radio-card-selected:hover {
+  background-color: var(--vt-c-green-mute);
+}
+
+.radio-card input[type="radio"] {
+  display: none;
+}
+
+button.next-button,
+button.prev-button {
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--vt-c-green);
+}
+
+button.next-button:disabled,
+button.prev-button:disabled {
+  color: var(--vt-c-divider-light-1);
+  cursor: not-allowed;
+}
+
+button.next-button:disabled:hover,
+button.prev-button:disabled:hover {
+  color: var(--vt-c-divider-light-1);
+  cursor: not-allowed;
+}
+
+button.next-button:hover,
+button.prev-button:hover {
+  color: var(--vt-c-green-mute);
+}
+
+button.next-button {
+  margin-left: 10px;
+}
