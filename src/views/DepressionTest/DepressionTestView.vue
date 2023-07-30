@@ -44,6 +44,7 @@
 <script>
 import { depressionTestQuestions } from "@/data/depressionQuestions";
 import { getTestResult } from "@/utils/testResultProcessor";
+import { Routes } from "@/router/routes";
 
 export default {
   data() {
@@ -77,7 +78,10 @@ export default {
     },
     submitTest() {
       const result = getTestResult(this.answers);
-      console.log(result);
+      this.$router.push({
+        path: Routes.Results,
+        query: { result }
+      });
     }
   }
 };

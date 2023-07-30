@@ -10,7 +10,7 @@ export const calculateTotalScore = (answers: Answer[]) => {
     "More than half the days": 2,
     "Nearly every day": 3,
     "No": 0,
-    "Yes": 2,
+    "Yes": 2
   };
 
   return answers.reduce((acc, answer) => {
@@ -23,19 +23,37 @@ export const interpretResults = (totalScore: number) => {
 
   switch (true) {
     case totalScore <= 10:
-      return testResult = "No or minimal depression";
+      testResult = "No or minimal depression";
+      break;
     case totalScore <= 20:
-      return testResult = "Mild depression";
+      testResult = "Mild depression";
+      break;
     case totalScore <= 30:
-      return testResult = "Moderate depression";
+      testResult = "Moderate depression";
+      break;
     case totalScore <= 40:
-      return testResult = "Severe depression";
+      testResult = "Severe depression";
+      break;
     default:
-      return testResult = "Extremely severe depression";
+      testResult = "Extremely severe depression";
   }
+
+  return testResult;
 };
 
 export const getTestResult = (answers: Answer[]) => {
   const totalScore = calculateTotalScore(answers);
   return interpretResults(totalScore);
+};
+
+export const getTestResultDescription = (testResult: string) => {
+  const testResultDescriptions: { [key: string]: string } = {
+    "No or minimal depression": "You are doing well and experiencing no or minimal signs of depression. Keep up the good work and take care of your mental health!",
+    "Mild depression": "You might be experiencing mild signs of depression. It's essential to take care of yourself and seek support if needed.",
+    "Moderate depression": "You might be experiencing moderate signs of depression. Consider reaching out to a mental health professional for support.",
+    "Severe depression": "You have severe depression.",
+    "Extremely severe depression": "You might be experiencing severe signs of depression. It's crucial to seek professional help and support as soon as possible."
+  };
+
+  return testResultDescriptions[testResult];
 }

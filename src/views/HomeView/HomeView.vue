@@ -27,11 +27,12 @@
 
 <script>
 import banner from "@/assets/banner.jpg";
+import { Routes } from "@/router/routes";
 
 export default {
   methods: {
     navigateToDepressionTest() {
-      this.$router.push("/quiz");
+      this.$router.push(Routes.Quiz);
     }
   },
   data() {
