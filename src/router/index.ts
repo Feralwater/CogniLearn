@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: Routes.About,
       name: 'about',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView/AboutView.vue')
     },
     {
       path: Routes.Quiz,
