@@ -4,7 +4,10 @@
     <v-card density="default"
             width="50vw"
     >
-      <v-card-title class="question-title">{{ currentQuestion.question }}</v-card-title>
+      <v-card-title class="question-title">
+        <div>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</div>
+        <div> {{ currentQuestion.question }}</div>
+      </v-card-title>
       <v-card-text>
         <div class="radio-buttons">
           <label
@@ -24,7 +27,7 @@
       </v-card-text>
       <v-card-actions>
         <button @click="prevQuestion" :disabled="currentQuestionIndex === 0" class="prev-button">Previous</button>
-        <button @click="nextQuestion" :disabled="currentQuestionIndex === questions.length - 1" class="next-button">
+        <button @click="nextQuestion" :disabled="currentQuestionIndex === questions.length - 1 || !currentAnswer" class="next-button">
           Next
         </button>
       </v-card-actions>
@@ -40,13 +43,14 @@
 
 <script>
 import { depressionTestQuestions } from "@/data/depressionQuestions";
+import { getTestResult } from "@/utils/testResultProcessor";
 
 export default {
   data() {
     return {
       questions: depressionTestQuestions,
       currentQuestionIndex: 0,
-      answers: Array(depressionTestQuestions.length).fill("")
+      answers: Array(depressionTestQuestions.length)
     };
   },
   computed: {
@@ -72,8 +76,8 @@ export default {
       }
     },
     submitTest() {
-      // Process the test results
-      console.log(this.answers);
+      const result = getTestResult(this.answers);
+      console.log(result);
     }
   }
 };
