@@ -1,4 +1,4 @@
-type Answer = "Not at all" | "Several days" | "More than half the days" | "Nearly every day" | "No" | "Yes";
+type Answer = "Not at all" | "Several days" | "More than half the days" | "Nearly every day";
 type ScoreMapping = {
   [key in Answer]: number;
 }
@@ -9,8 +9,6 @@ export const calculateTotalScore = (answers: Answer[]) => {
     "Several days": 1,
     "More than half the days": 2,
     "Nearly every day": 3,
-    "No": 0,
-    "Yes": 2
   };
 
   return answers.reduce((acc, answer) => {
@@ -22,16 +20,16 @@ export const interpretResults = (totalScore: number) => {
   let testResult: string;
 
   switch (true) {
-    case totalScore <= 10:
+    case totalScore <= 5:
       testResult = "No or minimal depression";
       break;
-    case totalScore <= 20:
+    case totalScore <= 10:
       testResult = "Mild depression";
       break;
-    case totalScore <= 30:
+    case totalScore <= 15:
       testResult = "Moderate depression";
       break;
-    case totalScore <= 40:
+    case totalScore <= 20:
       testResult = "Severe depression";
       break;
     default:
