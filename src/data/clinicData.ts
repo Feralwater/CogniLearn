@@ -10,16 +10,6 @@ export const clinics = [
     city: "New York",
   },
   {
-    id: 2,
-    name: "Evergreen Holistic Clinic",
-    lat: 48.8566,
-    lng: 2.3522,
-    phone: "123-456-7890",
-    medicalDirector: "Dr. Alexander Williams",
-    country: "France",
-    city: "Paris",
-  },
-  {
     id: 3,
     name: "Tranquil Wellness Institute",
     lat: 51.5074,

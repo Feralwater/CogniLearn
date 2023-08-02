@@ -1,5 +1,5 @@
 <template>
-  <h1>Our Clinics</h1>
+  <h1 class="contacts--heading">Our Clinics</h1>
   <div class="contacts">
     <div class="contacts--cards">
       <div v-for="clinic in clinics" :key="clinic.id">
