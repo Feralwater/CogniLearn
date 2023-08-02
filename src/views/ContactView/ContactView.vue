@@ -1,19 +1,22 @@
 <template>
-  <div>
-    <h1>Our Clinics</h1>
-    <div v-for="clinic in clinics" :key="clinic.id">
-      <ContactCard :clinic="clinic" />
+  <h1>Our Clinics</h1>
+  <div class="contacts">
+    <div class="contacts--cards">
+      <div v-for="clinic in clinics" :key="clinic.id">
+        <ContactCard :clinic="clinic" />
+      </div>
     </div>
-    <div id="map" style="height: 400px;"></div>
+    <div id="map" style="height: 400px;" />
   </div>
 </template>
 
 <script>
 import { clinics } from "@/data/clinicData";
 import ContactCard from "@/components/ContactCard/ContactCard.vue";
+
 export default {
   components: {
-    ContactCard,
+    ContactCard
   },
 
   mounted() {
@@ -21,7 +24,7 @@ export default {
   },
   data() {
     return {
-      clinics: clinics,
+      clinics: clinics
     };
   },
   methods: {
@@ -39,7 +42,7 @@ export default {
 
       apiLoaded.then(() => {
         const map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: 50, lng: -40},
+          center: { lat: 50, lng: -40 },
           zoom: 3
         });
 
@@ -66,7 +69,5 @@ export default {
 </script>
 
 <style>
-#map {
-  width: 100%;
-}
+@import "./ContactView.css";
 </style>

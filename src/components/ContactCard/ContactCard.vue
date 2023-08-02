@@ -26,11 +26,14 @@
 import { defineComponent } from "vue";
 
 interface Clinic {
+  id: number;
   name: string;
   country: string;
   city: string;
   medicalDirector: string;
   phone: string;
+  lat: number;
+  lng: number;
 }
 
 export default defineComponent({
