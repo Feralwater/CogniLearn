@@ -1,0 +1,23 @@
+.contactCard {
+  width: 350px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.contactCard--header {
+  padding: 8px 16px;
+  background-color: var(--vt-c-gray);
+  color: var(--vt-c-green);
+}
+
+.contactCard--data {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 16px;
+  font-size: 16px;
+}
+
+.contactCard--data-name {
+  font-weight: 600;
+}

@@ -22,6 +22,8 @@
   --vt-c-green: #14A09D;
   --vt-c-green-soft: rgba(20, 160, 157, 0.3);
   --vt-c-green-mute: #098583;
+
+  --vt-c-gray: #eaeaea;
 }
 
 /* semantic color variables for this project */
