@@ -2,11 +2,7 @@
   <div>
     <h1>Our Clinics</h1>
     <div v-for="clinic in clinics" :key="clinic.id">
-      <h3>{{ clinic.name }}</h3>
-      <p>Country: {{ clinic.country }}</p>
-      <p>City: {{ clinic.city }}</p>
-      <p>Medical Director: {{ clinic.medicalDirector }}</p>
-      <p>Phone: {{ clinic.phone }}</p>
+      <ContactCard :clinic="clinic" />
     </div>
     <div id="map" style="height: 400px;"></div>
   </div>
@@ -14,7 +10,12 @@
 
 <script>
 import { clinics } from "@/data/clinicData";
+import ContactCard from "@/components/ContactCard/ContactCard.vue";
 export default {
+  components: {
+    ContactCard,
+  },
+
   mounted() {
     this.initMap();
   },
