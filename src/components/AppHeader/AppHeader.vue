@@ -40,6 +40,9 @@
         <li class="header-navigation-item">
           <router-link to="/contact" class="header-link">Contact</router-link>
         </li>
+        <li class="header-navigation-item">
+          <router-link to="/login" class="header-link">Login</router-link>
+        </li>
       </ul>
     </nav>
   </header>
