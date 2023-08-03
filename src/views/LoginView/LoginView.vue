@@ -1,33 +1,38 @@
 <template>
   <div>
-    <v-img :src="doctorIcon" width="300" />
     <h1>Login to your personal account</h1>
-    <p>
-      To make the most of your learning experience and access exclusive content, we
-      encourage you to create an account or log in. By signing up, you'll be able to personalize your learning journey,
-      track your progress, and bookmark your favorite articles and resources.
-    </p>
-    <v-form>
-      <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        label="E-mail"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="password"
-        :rules="passwordRules"
-        label="Password"
-        type="password"
-        required
-      ></v-text-field>
-      <v-btn
-        :disabled="!valid"
-        color="success"
-        @click="login"
-      >Login
-      </v-btn>
-    </v-form>
+    <div class="login--preview">
+      <div>
+        <v-img :src="doctorIcon" width="350" />
+      </div>
+      <div class="login--form">
+        <p>
+          Log in to access exclusive content. You'll be able to personalize your learning
+          journey, track your progress, and bookmark your favorite articles and resources.
+        </p>
+        <v-form>
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            required
+          />
+          <v-text-field
+            v-model="password"
+            :rules="passwordRules"
+            label="Password"
+            type="password"
+            required
+          />
+          <v-btn
+            :disabled="!valid"
+            color="success"
+            @click="login"
+          >Login
+          </v-btn>
+        </v-form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,6 +69,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+@import "@/views/LoginView/LoginView.css";
 </style>

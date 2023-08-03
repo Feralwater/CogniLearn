@@ -1,0 +1,14 @@
+.login--preview {
+  display: flex;
+  padding: 20px 50px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.login--form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
