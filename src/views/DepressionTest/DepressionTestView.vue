@@ -27,7 +27,8 @@
       </v-card-text>
       <v-card-actions>
         <button @click="prevQuestion" :disabled="currentQuestionIndex === 0" class="prev-button">Previous</button>
-        <button @click="nextQuestion" :disabled="currentQuestionIndex === questions.length - 1 || !currentAnswer" class="next-button">
+        <button @click="nextQuestion" :disabled="currentQuestionIndex === questions.length - 1 || !currentAnswer"
+                class="next-button">
           Next
         </button>
       </v-card-actions>
@@ -35,8 +36,12 @@
 
     <v-progress-linear color="primary" :model-value="progress"></v-progress-linear>
 
-    <v-btn @click="submitTest" color="primary" class="submit-button"
-           v-if="currentQuestionIndex === questions.length - 1">Submit Test
+    <v-btn
+      @click="submitTest" color="primary" class="submit-button"
+      v-if="currentQuestionIndex === questions.length - 1"
+      :disabled="!currentAnswer"
+    >
+      Submit Test
     </v-btn>
   </div>
 </template>

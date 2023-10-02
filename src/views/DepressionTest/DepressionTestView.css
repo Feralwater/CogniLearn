@@ -74,3 +74,8 @@ button.prev-button:hover {
 button.next-button {
   margin-left: 10px;
 }
+
+.submit-button {
+  margin-top: 20px;
+  cursor: pointer;
+}
