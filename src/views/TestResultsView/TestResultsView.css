@@ -1,0 +1,20 @@
+.result-title {
+  font-size: 36px;
+  font-weight: bold;
+  color:var(--vt-c-important);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result-description {
+  font-size: 24px;
+  color: var(--vt-c-text-light-1);
+  text-align: center;
+  margin: 20px 60px;
+}
+
+.downloadBtn {
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+}
