@@ -32,16 +32,19 @@
     <nav class="header-navigation">
       <ul class="header-navigation-list header-container">
         <li class="header-navigation-item">
-          <router-link to="/" class="header-link">Home</router-link>
+          <router-link :to="Routes.Home" class="header-link">Home</router-link>
         </li>
         <li class="header-navigation-item">
-          <router-link to="/about" class="header-link">About</router-link>
+          <router-link :to="Routes.Statistics" class="header-link">Statistics</router-link>
         </li>
         <li class="header-navigation-item">
-          <router-link to="/contact" class="header-link">Contact</router-link>
+          <router-link :to="Routes.About" class="header-link">About</router-link>
         </li>
         <li class="header-navigation-item">
-          <router-link to="/login" class="header-link">Login</router-link>
+          <router-link :to="Routes.Contact" class="header-link">Contact</router-link>
+        </li>
+        <li class="header-navigation-item">
+          <router-link :to="Routes.Login" class="header-link">Login</router-link>
         </li>
       </ul>
     </nav>
@@ -56,14 +59,16 @@
 import logo from "@/assets/icons/logo.svg";
 import mapPointer from "@/assets/icons/Map-Pointer.svg";
 import clock from "@/assets/icons/clock.svg";
+import { Routes } from "@/router/routes";
 
 export default {
   data() {
     return {
       logoIcon: logo,
       mapPointer,
-      clock
+      clock,
+      Routes,
     };
-  }
+  },
 };
 </script>
