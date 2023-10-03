@@ -1,6 +1,9 @@
 <template>
   <div class="chart-container">
+    <div class="chart">
+      <h1 class="chart-header">Average scores of the last 10 years</h1>
     <Chart :data="chartData" :options="options" />
+    </div>
   </div>
 </template>
 
