@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <Line :data="chartData" :options="options" />
+    <Chart :data="chartData" :options="options" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js'
-import { Line } from 'vue-chartjs'
+import { Line as Chart } from 'vue-chartjs'
 
 ChartJS.register(
   CategoryScale,
@@ -35,7 +35,7 @@ export const options = {
 export default {
   name: 'App',
   components: {
-    Line
+    Chart,
   },
   data() {
     return {
@@ -46,7 +46,22 @@ export default {
             label: 'Depression level',
             backgroundColor: '#f87979',
             data: [5, 40, 35, 65, 65, 50, 30, 20, 10],
-          }
+          },
+          {
+            label: 'Anxiety level',
+            backgroundColor: '#79a5f8',
+            data: [65, 55, 45, 35, 25, 15, 5, 95, 85],
+          },
+          {
+            label: 'Stress level',
+            backgroundColor: '#e1f879',
+            data: [15, 25, 35, 45, 55, 65, 75, 85, 95],
+          },
+          {
+            label: 'Anger level',
+            backgroundColor: '#a879f8',
+            data: [4, 8, 15, 16, 23, 42, 56, 77, 88],
+          },
         ]
       },
       options
