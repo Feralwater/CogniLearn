@@ -12,21 +12,13 @@
         </p>
         <v-form>
           <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-          />
-          <v-text-field
-            v-model="password"
-            :rules="passwordRules"
-            label="Password"
-            type="password"
+            v-model.trim="loginStore.user"
+            label="Your name"
             required
           />
           <v-btn
             :disabled="!valid"
-            color="success"
+            color="primary"
             @click="login"
           >Login
           </v-btn>
@@ -38,34 +30,35 @@
 
 <script>
 import doctor from "@/assets/icons/doctor.svg";
+import { useLoginStore } from "@/stores/login";
 import { Routes } from "@/router/routes";
+import { useRouter } from "vue-router";
 
 export default {
+  setup() {
+    const loginStore = useLoginStore();
+    const router = useRouter();
+
+    const login = () => {
+      loginStore.login( loginStore.user );
+      router.push(Routes.Home);
+    };
+    return {
+      loginStore,
+      login,
+    };
+  },
+
   data() {
     return {
-      email: "",
-      password: "",
-      emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+\..+/.test(v) || "E-mail must be valid"
-      ],
-      passwordRules: [
-        v => !!v || "Password is required",
-        v => v.length >= 8 || "Password must be at least 8 characters"
-      ],
-      doctorIcon: doctor
+      doctorIcon: doctor,
     };
   },
   computed: {
     valid() {
-      return this.email && this.password;
-    }
+      return this.loginStore.user.length > 0;
+    },
   },
-  methods: {
-    login() {
-      this.$router.push(Routes.Home);
-    }
-  }
 };
 </script>
 

@@ -108,3 +108,9 @@
 .header-link:hover:before {
   transform: scaleX(1);
 }
+
+.guest-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--vt-c-guest);
+}
