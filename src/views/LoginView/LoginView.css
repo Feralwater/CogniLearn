@@ -12,3 +12,19 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--vt-c-indigo);
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.login-input:global(.v-field--variant-filled .v-field__overlay) {
+  background-color: var(--vt-c-green-soft);
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Login to your personal account</h1>
+    <h1 class="heading">Login to your personal account</h1>
     <div class="login--preview">
       <div>
         <v-img :src="doctorIcon" width="350" />
@@ -14,9 +14,12 @@
           <v-text-field
             v-model.trim="loginStore.user"
             label="Your name"
-            required
+            class="login-input"
+            color="primary"
+            :rules="[v => !!v || 'Name is required']"
           />
           <v-btn
+            class="login-btn"
             :disabled="!valid"
             color="primary"
             @click="login"
