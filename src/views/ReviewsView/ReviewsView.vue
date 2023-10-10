@@ -35,6 +35,9 @@ export default {
         review: this.review,
         rating: this.rating
       });
+      this.name = "";
+      this.review = "";
+      this.rating = 5;
     }
   }
 };
