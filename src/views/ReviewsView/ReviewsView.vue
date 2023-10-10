@@ -54,6 +54,6 @@ export default {
   <div>
     <review-form />
     <v-divider></v-divider>
-    <review-list />
+    <review-list :reviews="reviews" />
   </div>
 </template>

@@ -1,5 +1,12 @@
 <script lang="ts">
-
+export default {
+  props: {
+    reviews: {
+      type: Array,
+      required: true
+    }
+  }
+};
 </script>
 
 <template>
