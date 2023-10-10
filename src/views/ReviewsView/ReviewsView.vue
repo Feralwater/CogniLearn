@@ -1,13 +1,7 @@
 <script lang="ts">
 import ReviewForm from "@/components/ReviewForm/ReviewForm.vue";
 import ReviewList from "@/components/ReviewList/ReviewList.vue";
-
-interface Review {
-  id: number;
-  name: string;
-  review: string;
-  rating: number;
-}
+import type { Review } from "@/types/review";
 
 export default {
   components: {

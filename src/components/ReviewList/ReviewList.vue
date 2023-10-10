@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { Review } from "@/types/review";
+import ViewItem from "@/components/ViewItem/ViewItem.vue";
+
 export default {
+  components: { ViewItem },
   props: {
     reviews: {
-      type: Array as () => Array<{ id: number; name: string; review: string; rating: number }>,
+      type: Array as () => Array<Review>,
       required: true
     }
   }
@@ -10,11 +14,8 @@ export default {
 </script>
 
 <template>
-  <v-card v-for="review in reviews" :key="review.id" class="mt-4">
-    <v-card-title>{{ review.name }}</v-card-title>
-    <v-card-text>
-      <p>{{ review.review }}</p>
-      <p>Rating: {{ review.rating }}</p>
-    </v-card-text>
-  </v-card>
+  <div>
+    <h3> Our Reviews </h3>
+    <view-item v-for="review in reviews" :key="review.id" :review="review" />
+  </div>
 </template>
