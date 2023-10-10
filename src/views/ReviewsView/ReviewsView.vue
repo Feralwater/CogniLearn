@@ -1,5 +1,12 @@
 <script lang="ts">
+import ReviewForm from "@/components/ReviewForm/ReviewForm.vue";
+import ReviewList from "@/components/ReviewList/ReviewList.vue";
+
 export default {
+  components: {
+    ReviewForm,
+    ReviewList
+  },
   data() {
     return {
       name: "",
@@ -45,29 +52,8 @@ export default {
 
 <template>
   <div>
-    <v-form class="review-form" @submit.prevent>
-      <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
-      <textarea placeholder="Share your experience" class="input-field" v-model.trim="review"></textarea>
-      <select class="rating-select" v-model="rating">
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-      </select>
-      <v-btn class="add-button" color="primary" @click="addReview" type="submit">Add Review</v-btn>
-    </v-form>
+    <review-form />
     <v-divider></v-divider>
-    <v-card v-for="review in reviews" :key="review.id" class="mt-4">
-      <v-card-title>{{ review.name }}</v-card-title>
-      <v-card-text>
-        <p>{{ review.review }}</p>
-        <p>Rating: {{ review.rating }}</p>
-      </v-card-text>
-    </v-card>
+    <review-list />
   </div>
 </template>
-
-<style scoped>
-@import "./ReviewsView.css";
-</style>
