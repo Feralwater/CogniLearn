@@ -1,0 +1,34 @@
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--vt-c-white-mute);
+  border: 1px solid var(--vt-c-divider-light-1);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid var(--vt-c-divider-light-1);
+  border-radius: 3px;
+}
+
+.rating-select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid var(--vt-c-divider-light-1);
+  border-radius: 3px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 15px;
+}
+
