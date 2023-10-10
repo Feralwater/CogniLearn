@@ -2,6 +2,9 @@
 export default {
   data() {
     return {
+      name: "",
+      review: "",
+      rating: 5,
       reviews: [
         {
           id: 1,
@@ -23,6 +26,16 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    addReview() {
+      this.reviews.push({
+        id: this.reviews.length + 1,
+        name: this.name,
+        review: this.review,
+        rating: this.rating
+      });
+    }
   }
 };
 </script>
@@ -30,18 +43,16 @@ export default {
 <template>
   <div>
     <v-form class="review-form">
-      <input type="text" placeholder="Name" class="input-field" />
-      <textarea placeholder="Review" class="input-field"></textarea>
-      <select class="rating-select">
+      <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
+      <textarea placeholder="Share your experience" class="input-field" v-model.trim="review"></textarea>
+      <select class="rating-select" v-model="rating">
         <option value="5">5</option>
         <option value="4">4</option>
         <option value="3">3</option>
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
-      <div class="button-container">
-        <v-btn color="primary">Add Review</v-btn>
-      </div>
+      <v-btn class="add-button" color="primary" @click="addReview">Add Review</v-btn>
     </v-form>
     <v-divider></v-divider>
     <v-card v-for="review in reviews" :key="review.id" class="mt-4">
