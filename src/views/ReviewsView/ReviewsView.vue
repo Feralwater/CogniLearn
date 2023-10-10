@@ -2,6 +2,13 @@
 import ReviewForm from "@/components/ReviewForm/ReviewForm.vue";
 import ReviewList from "@/components/ReviewList/ReviewList.vue";
 
+interface Review {
+  id: number;
+  name: string;
+  review: string;
+  rating: number;
+}
+
 export default {
   components: {
     ReviewForm,
@@ -9,9 +16,6 @@ export default {
   },
   data() {
     return {
-      name: "",
-      review: "",
-      rating: 5,
       reviews: [
         {
           id: 1,
@@ -34,17 +38,10 @@ export default {
       ]
     };
   },
+
   methods: {
-    addReview() {
-      this.reviews.push({
-        id: Date.now(),
-        name: this.name,
-        review: this.review,
-        rating: this.rating
-      });
-      this.name = "";
-      this.review = "";
-      this.rating = 5;
+    addReview(review: Review) {
+      this.reviews.push(review);
     }
   }
 };
@@ -52,7 +49,7 @@ export default {
 
 <template>
   <div>
-    <review-form />
+    <review-form @addReview="addReview" />
     <v-divider></v-divider>
     <review-list :reviews="reviews" />
   </div>

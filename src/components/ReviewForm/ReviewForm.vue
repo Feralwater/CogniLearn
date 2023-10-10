@@ -1,5 +1,26 @@
 <script lang="ts">
-
+export default {
+  data() {
+    return {
+      name: "",
+      review: "",
+      rating: 5
+    };
+  },
+  methods: {
+    addReview() {
+      this.$emit("add-review", {
+        id: Date.now(),
+        name: this.name,
+        review: this.review,
+        rating: this.rating
+      });
+      this.name = "";
+      this.review = "";
+      this.rating = 5;
+    }
+  }
+};
 </script>
 
 <template>
