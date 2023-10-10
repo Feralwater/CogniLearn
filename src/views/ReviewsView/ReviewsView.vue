@@ -30,7 +30,7 @@ export default {
   methods: {
     addReview() {
       this.reviews.push({
-        id: this.reviews.length + 1,
+        id: Date.now(),
         name: this.name,
         review: this.review,
         rating: this.rating
@@ -42,7 +42,7 @@ export default {
 
 <template>
   <div>
-    <v-form class="review-form">
+    <v-form class="review-form" @submit.prevent>
       <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
       <textarea placeholder="Share your experience" class="input-field" v-model.trim="review"></textarea>
       <select class="rating-select" v-model="rating">
@@ -52,7 +52,7 @@ export default {
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
-      <v-btn class="add-button" color="primary" @click="addReview">Add Review</v-btn>
+      <v-btn class="add-button" color="primary" @click="addReview" type="submit">Add Review</v-btn>
     </v-form>
     <v-divider></v-divider>
     <v-card v-for="review in reviews" :key="review.id" class="mt-4">
