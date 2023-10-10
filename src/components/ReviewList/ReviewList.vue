@@ -2,7 +2,7 @@
 export default {
   props: {
     reviews: {
-      type: Array,
+      type: Array as () => Array<{ id: number; name: string; review: string; rating: number }>,
       required: true
     }
   }
@@ -18,7 +18,3 @@ export default {
     </v-card-text>
   </v-card>
 </template>
-
-<style scoped>
-
-</style>
