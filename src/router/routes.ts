@@ -6,4 +6,5 @@ export enum Routes {
   Contact = "/contact",
   Login = "/login",
   Statistics = "/statistics",
+  Reviews = "/reviews",
 }

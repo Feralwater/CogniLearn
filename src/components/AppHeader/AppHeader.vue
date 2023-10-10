@@ -47,6 +47,9 @@
           <router-link :to="Routes.Statistics" class="header-link">Statistics</router-link>
         </li>
         <li class="header-navigation-item">
+          <router-link :to="Routes.Reviews" class="header-link">Reviews</router-link>
+        </li>
+        <li class="header-navigation-item">
           <router-link :to="Routes.About" class="header-link">About</router-link>
         </li>
         <li class="header-navigation-item">
