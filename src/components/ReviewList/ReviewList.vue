@@ -15,7 +15,16 @@ export default {
 
 <template>
   <div>
-    <h3> Our Reviews </h3>
+    <h3 class="header"> Our Reviews </h3>
     <view-item v-for="review in reviews" :key="review.id" :review="review" />
   </div>
 </template>
+
+<style scoped>
+.header {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 15px;
+  color: #333;
+}
+</style>
