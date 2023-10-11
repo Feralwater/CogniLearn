@@ -19,7 +19,9 @@ export default {
       <p class="rating-text">Rating: {{ review.rating }}</p>
     </v-card-text>
     <div class="button-container">
-      <button class="remove-button">Remove</button>
+      <button class="remove-button"
+       @click="$emit('remove-review', review.id)"
+      >Remove</button>
       <button class="edit-button">Edit</button>
     </div>
   </v-card>

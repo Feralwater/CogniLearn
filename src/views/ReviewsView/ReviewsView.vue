@@ -36,6 +36,9 @@ export default {
   methods: {
     addReview(review: Review) {
       this.reviews.push(review);
+    },
+    removeReview(id: number) {
+      this.reviews = this.reviews.filter(review => review.id !== id);
     }
   }
 };
@@ -45,6 +48,6 @@ export default {
   <div>
     <review-form @addReview="addReview" />
     <v-divider></v-divider>
-    <review-list :reviews="reviews" />
+    <review-list :reviews="reviews" @removeReview="removeReview" />
   </div>
 </template>

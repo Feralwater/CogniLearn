@@ -9,6 +9,11 @@ export default {
       type: Array as () => Array<Review>,
       required: true
     }
+  },
+  methods: {
+    removeReview(id: number) {
+      this.$emit("remove-review", id);
+    }
   }
 };
 </script>
@@ -16,7 +21,12 @@ export default {
 <template>
   <div>
     <h3 class="header"> Our Reviews </h3>
-    <view-item v-for="review in reviews" :key="review.id" :review="review" />
+    <view-item
+      v-for="review in reviews"
+      :key="review.id"
+      :review="review"
+      @removeReview="removeReview"
+    />
   </div>
 </template>
 

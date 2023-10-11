@@ -47,7 +47,7 @@ export default {
   background-color: var(--vt-c-white-mute);
   border: 1px solid var(--vt-c-divider-light-1);
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin: 15px;
 }
 
 .input-field {
