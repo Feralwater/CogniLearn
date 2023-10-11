@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div v-if="reviews.length > 0">
     <h3 class="header"> Our Reviews </h3>
     <view-item
       v-for="review in reviews"
@@ -27,6 +27,9 @@ export default {
       :review="review"
       @removeReview="removeReview"
     />
+  </div>
+  <div v-else>
+    <h3 class="header"> No Reviews Yet </h3>
   </div>
 </template>
 
