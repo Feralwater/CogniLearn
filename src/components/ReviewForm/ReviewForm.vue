@@ -1,10 +1,13 @@
 <script lang="ts">
+import RatingStars from "@/components/RatingStars/RatingStars.vue";
+
 export default {
+  components: { RatingStars },
   data() {
     return {
       name: "",
       review: "",
-      rating: 5
+      rating: 0,
     };
   },
   methods: {
@@ -17,7 +20,10 @@ export default {
       });
       this.name = "";
       this.review = "";
-      this.rating = 5;
+      this.rating = 0;
+    },
+    onRatingChange(rating: number) {
+      this.rating = rating;
     }
   }
 };
@@ -27,13 +33,7 @@ export default {
   <v-form class="review-form" @submit.prevent>
     <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
     <textarea placeholder="Share your experience" class="input-field" v-model.trim="review"></textarea>
-    <select class="rating-select" v-model="rating">
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1">1</option>
-    </select>
+    <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
     <v-btn class="add-button" color="primary" @click="addReview" type="submit">Add Review</v-btn>
   </v-form>
 </template>
@@ -50,14 +50,6 @@ export default {
 }
 
 .input-field {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid var(--vt-c-divider-light-1);
-  border-radius: 3px;
-}
-
-.rating-select {
   width: 100%;
   margin: 10px 0;
   padding: 10px;

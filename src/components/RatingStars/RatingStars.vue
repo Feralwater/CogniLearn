@@ -9,6 +9,10 @@ export default defineComponent({
     rating: {
       type: Number,
       required: true
+    },
+    onRatingChange: {
+      type: Function,
+      required: false
     }
   },
   data() {
@@ -25,8 +29,9 @@ export default defineComponent({
     <img v-for="star in 5"
          :key="star"
          :src="star <= rating ? yellowStar : grayStar"
-         class="star"
+         :class="{ pointer: onRatingChange, star}"
          alt="star"
+         @click="onRatingChange && onRatingChange(star)"
     />
   </div>
 </template>
@@ -41,5 +46,9 @@ export default defineComponent({
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>

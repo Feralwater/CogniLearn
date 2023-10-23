@@ -27,7 +27,7 @@ export default {
     },
     async fetchReviews() {
       try {
-        const { data } = await axios.get("https://jsonplaceholder.typicode.com/comments?_limit=10");
+        const { data } = await axios.get("https://jsonplaceholder.typicode.com/comments?_limit=5");
         this.reviews = data.map((review: ServerReview) => ({
           id: review.id,
           name: review.name,
