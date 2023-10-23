@@ -4,3 +4,11 @@ export interface Review {
   review: string;
   rating: number;
 }
+
+export interface ServerReview {
+  id: number;
+  name: string;
+  body: string;
+  postId: number;
+  email: string;
+}

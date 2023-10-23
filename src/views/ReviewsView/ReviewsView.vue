@@ -1,8 +1,9 @@
 <script lang="ts">
 import ReviewList from "@/components/ReviewList/ReviewList.vue";
-import type { Review } from "@/types/review";
+import type { Review, ServerReview } from "@/types/review";
 import ModalWindow from "@/components/ModalWindow/ModalWindow.vue";
 import ReviewForm from "@/components/ReviewForm/ReviewForm.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -11,26 +12,7 @@ export default {
   },
   data() {
     return {
-      reviews: [
-        {
-          id: 1,
-          name: "John",
-          review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-          rating: 4
-        },
-        {
-          id: 2,
-          name: "Jane",
-          review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-          rating: 5
-        },
-        {
-          id: 3,
-          name: "Jim",
-          review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-          rating: 3
-        }
-      ],
+      reviews: [] as Review[],
       dialogVisible: false
     };
   },
@@ -42,7 +24,24 @@ export default {
     },
     removeReview(id: number) {
       this.reviews = this.reviews.filter(review => review.id !== id);
+    },
+    async fetchReviews() {
+      try {
+        const { data } = await axios.get("https://jsonplaceholder.typicode.com/comments?_limit=10");
+        this.reviews = data.map((review: ServerReview) => ({
+          id: review.id,
+          name: review.name,
+          review: review.body,
+          rating: Math.floor(Math.random() * 5) + 1
+        }));
+      } catch (error) {
+        alert("Something went wrong. Please try again later.");
+      }
     }
+  },
+
+  mounted() {
+    this.fetchReviews();
   }
 };
 </script>
