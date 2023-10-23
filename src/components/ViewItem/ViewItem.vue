@@ -19,10 +19,11 @@ export default {
       <p class="rating-text">Rating: {{ review.rating }}</p>
     </v-card-text>
     <div class="button-container">
-      <button class="remove-button"
-       @click="$emit('remove-review', review.id)"
-      >Remove</button>
-      <button class="edit-button">Edit</button>
+      <v-btn color="primary"
+             @click="$emit('remove-review', review.id)"
+      >Remove
+      </v-btn>
+      <v-btn color="primary">Edit</v-btn>
     </div>
   </v-card>
 </template>
@@ -61,29 +62,14 @@ export default {
 .rating-text {
   font-size: 18px;
   font-weight: bold;
-  color: #FF5722;
+  color: var(--vt-c-guest);
 }
 
 .button-container {
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.remove-button {
-  background-color: #00796B;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.edit-button {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
 </style>

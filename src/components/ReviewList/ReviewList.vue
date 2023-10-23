@@ -20,7 +20,6 @@ export default {
 
 <template>
   <div v-if="reviews.length > 0">
-    <h3 class="header"> Our Reviews </h3>
     <view-item
       v-for="review in reviews"
       :key="review.id"
@@ -32,12 +31,3 @@ export default {
     <h3 class="header"> No Reviews Yet </h3>
   </div>
 </template>
-
-<style scoped>
-.header {
-  font-size: 32px;
-  font-weight: bold;
-  margin: 15px;
-  color: #333;
-}
-</style>
