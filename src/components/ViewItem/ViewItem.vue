@@ -1,7 +1,9 @@
 <script lang="ts">
 import type { Review } from "@/types/review";
+import RatingStars from "@/components/RatingStars/RatingStars.vue";
 
 export default {
+  components: { RatingStars },
   props: {
     review: {
       type: Object as () => Review,
@@ -16,7 +18,7 @@ export default {
     <v-card-title class="card-title">{{ review.name }}</v-card-title>
     <v-card-text class="card-text">
       <p class="review-text">{{ review.review }}</p>
-      <p class="rating-text">Rating: {{ review.rating }}</p>
+      <rating-stars :rating="review.rating" />
     </v-card-text>
     <div class="button-container">
       <v-btn color="primary"
@@ -57,12 +59,6 @@ export default {
   line-height: 1.4;
   margin-bottom: 10px;
   color: #333;
-}
-
-.rating-text {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--vt-c-guest);
 }
 
 .button-container {
