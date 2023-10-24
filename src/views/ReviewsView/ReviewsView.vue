@@ -4,9 +4,11 @@ import type { Review, ServerReview } from "@/types/review";
 import ModalWindow from "@/components/ModalWindow/ModalWindow.vue";
 import ReviewForm from "@/components/ReviewForm/ReviewForm.vue";
 import axios from "axios";
+import CustomSelect from "@/components/CustomSelect/CustomSelect.vue";
 
 export default {
   components: {
+    CustomSelect,
     ReviewForm, ModalWindow,
     ReviewList
   },
@@ -14,7 +16,12 @@ export default {
     return {
       reviews: [] as Review[],
       dialogVisible: false,
-      isReviewsLoading: false
+      isReviewsLoading: false,
+      selectedSort: "",
+      sortOptions: [
+        { value: "name", title: "Sort by name" },
+        { value: "rating", title: "Sort by rating" }
+      ]
     };
   },
 
@@ -56,8 +63,15 @@ export default {
       <review-form @addReview="addReview" />
     </modal-window>
     <div class="headerContainer">
-      <h3 class="header">Our Reviews</h3>
-      <v-btn @click="dialogVisible = true" color="primary">Add Review</v-btn>
+      <h1 class="header">Our Reviews</h1>
+      <div class="buttonsContainer">
+        <v-btn @click="dialogVisible = true" color="primary">Add Review</v-btn>
+        <custom-select
+        v-model="selectedSort"
+        :items="sortOptions"
+        :selectedItem="selectedSort"
+        />
+      </div>
     </div>
     <v-divider></v-divider>
     <review-list :reviews="reviews" @removeReview="removeReview" v-if="!isReviewsLoading" />
@@ -75,7 +89,7 @@ export default {
 .header {
   font-size: 32px;
   font-weight: bold;
-  color: #333;
+  color: var(--vt-c-text-light-1);
 }
 
 .headerContainer {
@@ -90,6 +104,12 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 </style>
