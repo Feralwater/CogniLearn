@@ -13,7 +13,8 @@ export default {
   data() {
     return {
       reviews: [] as Review[],
-      dialogVisible: false
+      dialogVisible: false,
+      isReviewsLoading: false
     };
   },
 
@@ -27,6 +28,7 @@ export default {
     },
     async fetchReviews() {
       try {
+        this.isReviewsLoading = true;
         const { data } = await axios.get("https://jsonplaceholder.typicode.com/comments?_limit=5");
         this.reviews = data.map((review: ServerReview) => ({
           id: review.id,
@@ -36,6 +38,8 @@ export default {
         }));
       } catch (error) {
         alert("Something went wrong. Please try again later.");
+      } finally {
+        this.isReviewsLoading = false;
       }
     }
   },
@@ -56,7 +60,14 @@ export default {
       <v-btn @click="dialogVisible = true" color="primary">Add Review</v-btn>
     </div>
     <v-divider></v-divider>
-    <review-list :reviews="reviews" @removeReview="removeReview" />
+    <review-list :reviews="reviews" @removeReview="removeReview" v-if="!isReviewsLoading" />
+    <div v-else class="progress">
+      <v-progress-circular
+        size="50"
+        color="primary"
+        indeterminate
+      />
+    </div>
   </div>
 </template>
 
@@ -72,6 +83,13 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin: 10px 15px;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 </style>
