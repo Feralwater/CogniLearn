@@ -59,7 +59,6 @@ export default {
 
   watch: {
     selectedSort(value: string) {
-      console.log(value);
       switch (value) {
         case "nameAsk":
           this.reviews.sort((a, b) => a.name.localeCompare(b.name));
