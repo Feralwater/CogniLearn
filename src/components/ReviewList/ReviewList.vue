@@ -31,3 +31,12 @@ export default {
     <h3 class="header"> No Reviews Yet </h3>
   </div>
 </template>
+
+<style scoped>
+.header {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 30px;
+  color: var(--vt-c-text-light-1);
+}
+</style>
