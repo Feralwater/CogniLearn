@@ -19,8 +19,10 @@ export default {
       isReviewsLoading: false,
       selectedSort: "",
       sortOptions: [
-        { value: "name", title: "Sort by name" },
-        { value: "rating", title: "Sort by rating" }
+        { value: "nameAsk", title: "Sort by name (A-Z)" },
+        { value: "nameDesc", title: "Sort by name (Z-A)" },
+        { value: "ratingAsk", title: "Sort by rating (high to low)" },
+        { value: "ratingDesc", title: "Sort by rating (low to high)" }
       ]
     };
   },
@@ -53,6 +55,28 @@ export default {
 
   mounted() {
     this.fetchReviews();
+  },
+
+  watch: {
+    selectedSort(value: string) {
+      console.log(value);
+      switch (value) {
+        case "nameAsk":
+          this.reviews.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case "nameDesc":
+          this.reviews.sort((a, b) => b.name.localeCompare(a.name));
+          break;
+        case "ratingAsk":
+          this.reviews.sort((a, b) => b.rating - a.rating);
+          break;
+        case "ratingDesc":
+          this.reviews.sort((a, b) => a.rating - b.rating);
+          break;
+        default:
+          break;
+      }
+    }
   }
 };
 </script>
@@ -69,7 +93,6 @@ export default {
         <custom-select
         v-model="selectedSort"
         :items="sortOptions"
-        :selectedItem="selectedSort"
         />
       </div>
     </div>

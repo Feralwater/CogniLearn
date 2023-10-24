@@ -9,7 +9,7 @@ export default defineComponent({
       default: () => [],
       required: true
     },
-    selectedItem: {
+    modelValue: {
       type: String,
       default: "",
       required: true
@@ -17,14 +17,14 @@ export default defineComponent({
   },
   methods: {
     onChange(event: Event) {
-      this.$emit("update:selectedItem", (event.target as HTMLSelectElement).value);
+      this.$emit("update:modelValue", (event.target as HTMLSelectElement).value);
     }
   }
 });
 </script>
 
 <template>
-    <select :value="selectedItem" @change="onChange" class="select">
+    <select :value="modelValue" @change="onChange" class="select">
       <option disabled value="" selected>Choose from the list</option>
       <option v-for="item in items" :key="item.value" :value="item.value">
         {{ item.title }}
