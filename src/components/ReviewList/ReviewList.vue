@@ -53,4 +53,8 @@ export default {
   transform: translateX(200px);
 }
 
+.reviews-list-move {
+  transition: transform .5s ease;
+}
+
 </style>
