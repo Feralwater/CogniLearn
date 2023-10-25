@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import banner from "@/assets/banner.jpg";
+import banner from "@/assets/images/home/banner.png";
 import { Routes } from "@/router/routes";
 import SlideGroup from "@/components/SlideGroup/SlideGroup.vue";
 import { doctors } from "@/data/doctors";
