@@ -23,7 +23,8 @@ export default {
         { value: "nameDesc", title: "Sort by name (Z-A)" },
         { value: "ratingAsk", title: "Sort by rating (high to low)" },
         { value: "ratingDesc", title: "Sort by rating (low to high)" }
-      ]
+      ],
+      search: ""
     };
   },
 
@@ -57,24 +58,23 @@ export default {
     this.fetchReviews();
   },
 
-  watch: {
-    selectedSort(value: string) {
-      switch (value) {
+  computed: {
+    sortedReviews() {
+      switch (this.selectedSort) {
         case "nameAsk":
-          this.reviews.sort((a, b) => a.name.localeCompare(b.name));
-          break;
+          return [...this.reviews].sort((a, b) => a.name.localeCompare(b.name));
         case "nameDesc":
-          this.reviews.sort((a, b) => b.name.localeCompare(a.name));
-          break;
+          return [...this.reviews].sort((a, b) => b.name.localeCompare(a.name));
         case "ratingAsk":
-          this.reviews.sort((a, b) => b.rating - a.rating);
-          break;
+          return [...this.reviews].sort((a, b) => b.rating - a.rating);
         case "ratingDesc":
-          this.reviews.sort((a, b) => a.rating - b.rating);
-          break;
+          return [...this.reviews].sort((a, b) => a.rating - b.rating);
         default:
-          break;
+          return this.reviews;
       }
+    },
+    filteredReviews() {
+      return this.sortedReviews.filter(review => review.name.toLowerCase().includes(this.search.toLowerCase()));
     }
   }
 };
@@ -88,15 +88,21 @@ export default {
     <div class="headerContainer">
       <h1 class="header">Our Reviews</h1>
       <div class="buttonsContainer">
+        <v-text-field
+          v-model.trim="search"
+          label="Looking for something?"
+          class="search-input"
+          color="primary"
+        />
         <v-btn @click="dialogVisible = true" color="primary">Add Review</v-btn>
         <custom-select
-        v-model="selectedSort"
-        :items="sortOptions"
+          v-model="selectedSort"
+          :items="sortOptions"
         />
       </div>
     </div>
     <v-divider></v-divider>
-    <review-list :reviews="reviews" @removeReview="removeReview" v-if="!isReviewsLoading" />
+    <review-list :reviews="filteredReviews" @removeReview="removeReview" v-if="!isReviewsLoading" />
     <div v-else class="progress">
       <v-progress-circular
         size="50"
@@ -132,6 +138,15 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.search-input {
+  width: 300px;
+  margin-right: 20px;
+}
+
+.search-input:global(.v-field--variant-filled .v-field__overlay) {
+  background-color: var(--vt-c-green-soft);
 }
 
 </style>
