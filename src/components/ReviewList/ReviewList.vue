@@ -20,12 +20,14 @@ export default {
 
 <template>
   <div v-if="reviews.length > 0">
-    <view-item
-      v-for="review in reviews"
-      :key="review.id"
-      :review="review"
-      @removeReview="removeReview"
-    />
+    <transition-group name="reviews-list" tag="div">
+      <view-item
+        v-for="review in reviews"
+        :key="review.id"
+        :review="review"
+        @removeReview="removeReview"
+      />
+    </transition-group>
   </div>
   <div v-else>
     <h3 class="header"> No Reviews Yet </h3>
@@ -39,4 +41,16 @@ export default {
   font-size: 30px;
   color: var(--vt-c-text-light-1);
 }
+
+.reviews-list-enter-active,
+.reviews-list-leave-active {
+  transition: all .5s ease;
+}
+
+.reviews-list-enter-from,
+.reviews-list-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+
 </style>
