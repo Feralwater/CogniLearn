@@ -16,6 +16,8 @@
             label="Your name"
             color="primary"
             variant="underlined"
+            clearable
+            persistent-clear
             :rules="[v => !!v || 'Name is required']"
           />
           <v-btn
@@ -59,6 +61,7 @@ export default {
   },
   computed: {
     valid() {
+      if(!this.loginStore.user) return false;
       return this.loginStore.user.length > 0;
     },
   },
