@@ -60,44 +60,44 @@
 </style>
 
 <script>
+import { ref } from "vue";
 import logo from "@/assets/icons/logo.svg";
 import mapPointer from "@/assets/icons/Map-Pointer.svg";
 import clock from "@/assets/icons/clock.svg";
 import { Routes } from "@/router/routes";
 import { useLoginStore } from "@/stores/login";
 
-
 export default {
   setup() {
     const loginStore = useLoginStore();
+    const drawer = ref(false);
+    const logoIcon = logo;
+    const links = [
+      { text: "Home", route: Routes.Home },
+      { text: "Statistics", route: Routes.Statistics },
+      { text: "Reviews", route: Routes.Reviews },
+      { text: "About", route: Routes.About },
+      { text: "Contact", route: Routes.Contact }
+    ];
+
     const logout = () => {
       loginStore.logout();
     };
 
     const toggleDrawer = () => {
-      this.drawer = !this.drawer;
+      drawer.value = !drawer.value;
     };
 
     return {
       loginStore,
       logout,
       toggleDrawer,
-    };
-  },
-
-  data() {
-    return {
-      logoIcon: logo,
+      drawer,
+      logoIcon,
       mapPointer,
       clock,
       Routes,
-      links: [
-        { text: "Home", route: Routes.Home },
-        { text: "Statistics", route: Routes.Statistics },
-        { text: "Reviews", route: Routes.Reviews },
-        { text: "About", route: Routes.About },
-        { text: "Contact", route: Routes.Contact },
-      ],
+      links
     };
   }
 };
