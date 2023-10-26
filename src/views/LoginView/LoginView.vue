@@ -14,7 +14,6 @@
           <v-text-field
             v-model.trim="loginStore.user"
             label="Your name"
-            class="login-input"
             color="primary"
             variant="underlined"
             :rules="[v => !!v || 'Name is required']"
