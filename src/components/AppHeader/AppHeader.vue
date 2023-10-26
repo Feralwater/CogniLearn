@@ -40,20 +40,8 @@
     </div>
     <nav class="header-navigation">
       <ul class="header-navigation-list header-container">
-        <li class="header-navigation-item">
-          <router-link :to="Routes.Home" class="header-link">Home</router-link>
-        </li>
-        <li class="header-navigation-item">
-          <router-link :to="Routes.Statistics" class="header-link">Statistics</router-link>
-        </li>
-        <li class="header-navigation-item">
-          <router-link :to="Routes.Reviews" class="header-link">Reviews</router-link>
-        </li>
-        <li class="header-navigation-item">
-          <router-link :to="Routes.About" class="header-link">About</router-link>
-        </li>
-        <li class="header-navigation-item">
-          <router-link :to="Routes.Contact" class="header-link">Contact</router-link>
+        <li class="header-navigation-item" v-for="link in links" :key="link.route">
+          <router-link :to="link.route" class="header-link">{{ link.text }}</router-link>
         </li>
         <li class="header-navigation-item">
           <router-link
@@ -86,9 +74,14 @@ export default {
       loginStore.logout();
     };
 
+    const toggleDrawer = () => {
+      this.drawer = !this.drawer;
+    };
+
     return {
       loginStore,
-      logout
+      logout,
+      toggleDrawer,
     };
   },
 
@@ -97,7 +90,14 @@ export default {
       logoIcon: logo,
       mapPointer,
       clock,
-      Routes
+      Routes,
+      links: [
+        { text: "Home", route: Routes.Home },
+        { text: "Statistics", route: Routes.Statistics },
+        { text: "Reviews", route: Routes.Reviews },
+        { text: "About", route: Routes.About },
+        { text: "Contact", route: Routes.Contact },
+      ],
     };
   }
 };
