@@ -17,7 +17,7 @@
             color="primary"
             variant="underlined"
             clearable
-            persistent-clear
+            persistentClear
             :rules="[v => !!v || 'Name is required']"
           />
           <v-btn
