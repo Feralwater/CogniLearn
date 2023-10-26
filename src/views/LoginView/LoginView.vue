@@ -16,6 +16,7 @@
             label="Your name"
             class="login-input"
             color="primary"
+            variant="underlined"
             :rules="[v => !!v || 'Name is required']"
           />
           <v-btn

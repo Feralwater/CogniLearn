@@ -39,6 +39,6 @@ export default defineComponent({
 
 <style scoped>
 .pa-4 {
-
+  margin: 20px 0;
 }
 </style>

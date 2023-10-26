@@ -25,6 +25,3 @@
   margin-top: 20px;
 }
 
-.login-input:global(.v-field--variant-filled .v-field__overlay) {
-  background-color: var(--vt-c-green-soft);
-}
