@@ -17,8 +17,10 @@
             color="primary"
             variant="underlined"
             clearable
-            persistentClear
-            :rules="[v => !!v || 'Name is required']"
+            persistent-clear
+            :counter="20"
+            :rules="[v => !!v || 'Name is required',
+                      v => (v && v.length <= 20) || 'Name must be less than 20 characters']"
           />
           <v-btn
             class="login-btn"
@@ -33,7 +35,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import doctor from "@/assets/icons/doctor.svg";
 import { useLoginStore } from "@/stores/login";
 import { Routes } from "@/router/routes";
@@ -45,26 +47,31 @@ export default {
     const router = useRouter();
 
     const login = () => {
-      loginStore.login( loginStore.user );
+      loginStore.login(loginStore.user);
       router.push(Routes.Home);
     };
     return {
       loginStore,
-      login,
+      login
     };
   },
 
   data() {
     return {
-      doctorIcon: doctor,
+      doctorIcon: doctor
     };
   },
   computed: {
     valid() {
-      if(!this.loginStore.user) return false;
+      if (!this.loginStore.user) {
+        return false;
+      }
+      if(this.loginStore.user.length > 20) {
+        return false;
+      }
       return this.loginStore.user.length > 0;
-    },
-  },
+    }
+  }
 };
 </script>
 
