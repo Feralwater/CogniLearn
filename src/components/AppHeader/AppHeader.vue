@@ -16,27 +16,27 @@ const loginStore = useLoginStore();
     </div>
     <div class="header-row">
       <div class="header-column">
-        <span class="column-name">Emergency Help</span>
+        <span>Emergency Help</span>
         <span class="column-name green phone">123-456-7890</span>
       </div>
       <v-divider vertical thickness="2" />
       <div class="header-row hidden">
         <v-img :src="mapPointer" height="35" width="35" />
         <div class="header-column">
-          <span class="column-name">PO Box 16122 Collins Street West</span>
-          <span class="column-name">Victoria 8007 Australia</span>
+          <span>PO Box 16122 Collins Street West</span>
+          <span>Victoria 8007 Australia</span>
         </div>
       </div>
       <div class="header-row hidden">
         <v-divider vertical thickness="2" />
         <v-img :src="clock" height="30" width="30" />
         <div class="header-column">
-          <span class="column-name">Monday - Saturday - 8:00 - 18:00</span>
-          <span class="column-name">Sunday - 8:00 - 14:00</span>
+          <span>Monday - Saturday - 8:00 - 18:00</span>
+          <span>Sunday - 8:00 - 14:00</span>
         </div>
         <v-divider vertical thickness="2" />
         <div class="header-column">
-            <span v-if="loginStore.isAuthenticated" class="guest-name">
+            <span v-if="loginStore.isAuthenticated">
               {{ `Welcome, ${loginStore.user}` }}
             </span>
           <span v-else class="guest-name">
