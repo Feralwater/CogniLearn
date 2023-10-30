@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import AppHeader from "@/components/AppHeader/AppHeader.vue";
 import AppFooter from "@/components/AppFooter/AppFoote.vue";
+import AppBar from "@/components/AppBar/AppBar.vue";
 </script>
 
 <template>
   <v-app>
-    <AppHeader />
+    <AppBar />
     <router-view />
     <app-footer />
   </v-app>

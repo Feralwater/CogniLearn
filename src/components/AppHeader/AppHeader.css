@@ -66,49 +66,6 @@
   }
 }
 
-.header-navigation {
-  width: 100%;
-  background-color: var(--vt-c-green);
-}
-
-.header-navigation-list {
-  list-style-type: none;
-  padding: 0 15px;
-}
-
-.header-navigation-item {
-  display: inline-block;
-  text-transform: uppercase;
-}
-
-.header-link {
-  color: var(--vt-c-white);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  display: block;
-  padding: 15px 0;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.header-link:before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 0;
-  content: " ";
-  height: 3px;
-  background-color: var(--vt-c-white);
-  transform: scaleX(0);
-  transition: all 0.3s ease-in-out;
-}
-
-.header-link:hover:before {
-  transform: scaleX(1);
-}
-
 .guest-name {
   font-size: 18px;
   font-weight: 500;
