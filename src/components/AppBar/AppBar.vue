@@ -36,6 +36,12 @@
   color: var(--white);
 }
 
+@media screen and (max-width: 599px) {
+  :global(.v-toolbar__extension) {
+    display: none;
+  }
+}
+
 </style>
 
 <script>
