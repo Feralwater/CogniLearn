@@ -15,63 +15,71 @@ const props = defineProps<{
 </script>
 
 <template>
-  <nav class="header-navigation d-none d-sm-flex">
-    <ul class="header-navigation-list header-container">
-      <li class="header-navigation-item" v-for="link in props.links" :key="link.route">
-        <router-link :to="link.route" class="header-link">{{ link.text }}</router-link>
-      </li>
-      <li class="header-navigation-item">
+  <nav class="navigation d-none d-sm-flex">
+    <v-list class="navigation-list header-container">
+      <v-list-item class="navigation-item" v-for="link in props.links" :key="link.route">
+        <router-link :to="link.route" class="navigation-link">{{ link.text }}</router-link>
+      </v-list-item>
+      <v-list-item class="navigation-item">
         <router-link
           v-if="!loginStore.isAuthenticated"
-          :to="Routes.Login" class="header-link">Login
+          :to="Routes.Login" class="navigation-link">Login
         </router-link>
-        <span v-else class="header-link" @click="logout">Logout</span>
-      </li>
-    </ul>
+        <span v-else class="navigation-link" @click="logout">Logout</span>
+      </v-list-item>
+    </v-list>
   </nav>
 </template>
 
 <style scoped>
-.header-navigation {
+
+.navigation {
   width: 100%;
-  background-color: var(--vt-c-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
 }
 
-.header-navigation-list {
-  list-style-type: none;
-  padding: 0 15px;
+.navigation-list {
+  display: flex;
+  padding: 0;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--primary);
 }
 
-.header-navigation-item {
-  display: inline-block;
+.navigation-item {
   text-transform: uppercase;
 }
 
-.header-link {
-  color: var(--vt-c-white);
+.navigation-link {
+  color: var(--white);
   text-decoration: none;
   font-weight: 500;
   position: relative;
   display: block;
-  padding: 15px 0;
+  padding: 4px 0;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-.header-link:before {
+.navigation-link:before {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 0;
-  content: " ";
-  height: 3px;
-  background-color: var(--vt-c-white);
+  content: "";
+  height: 2px;
+  background-color: var(--white);
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;
 }
 
-.header-link:hover:before {
+.navigation-link:hover:before {
   transform: scaleX(1);
 }
+
 </style>
