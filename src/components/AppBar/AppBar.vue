@@ -2,7 +2,7 @@
   <v-app-bar>
     <v-app-bar-nav-icon
       @click="drawer = !drawer"
-      class="d-flex d-sm-none"
+      class="d-flex d-sm-none burger-icon"
     />
     <app-header />
 
@@ -27,6 +27,14 @@
 </template>
 
 <style scoped>
+:global(.v-toolbar__content) {
+  height: 100% !important;
+  background-color: var(--secondary);
+}
+
+.burger-icon {
+  color: var(--white);
+}
 
 </style>
 

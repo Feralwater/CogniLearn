@@ -10,7 +10,7 @@ const loginStore = useLoginStore();
 <template>
   <header class="header">
     <div class="header-container">
-      <div class="header-logo">
+      <div class="header-logo mobile-hidden">
         <v-img :src="logo" height="64" width="80" />
         <span class="project-name black">mind</span>
         <span class="project-name green">masters</span>
@@ -36,14 +36,14 @@ const loginStore = useLoginStore();
             <span>Sunday - 8:00 - 14:00</span>
           </div>
           <v-divider vertical thickness="2" />
-          <div class="header-column">
+        </div>
+        <div class="header-column">
             <span v-if="loginStore.isAuthenticated">
               {{ `Welcome, ${loginStore.user}` }}
             </span>
-            <span v-else class="guest-name">
+          <span v-else class="guest-name">
               Hi, Guest!
             </span>
-          </div>
         </div>
       </div>
     </div>
