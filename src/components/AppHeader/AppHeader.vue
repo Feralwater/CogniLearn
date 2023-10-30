@@ -1,43 +1,5 @@
 <template>
   <header>
-    <div class="header-container">
-      <div class="header-logo">
-        <v-img :src="logoIcon" height="64" width="80" />
-        <span class="project-name black">mind</span>
-        <span class="project-name green">masters</span>
-      </div>
-      <div class="header-row">
-        <div class="header-column">
-          <span class="column-name">Emergency Help</span>
-          <span class="column-name green phone">123-456-7890</span>
-        </div>
-        <v-divider vertical thickness="2" />
-        <div class="header-row hidden">
-          <v-img :src="mapPointer" height="35" width="35" />
-          <div class="header-column">
-            <span class="column-name">PO Box 16122 Collins Street West</span>
-            <span class="column-name">Victoria 8007 Australia</span>
-          </div>
-        </div>
-        <div class="header-row hidden">
-          <v-divider vertical thickness="2" />
-          <v-img :src="clock" height="30" width="30" />
-          <div class="header-column">
-            <span class="column-name">Monday - Saturday - 8:00 - 18:00</span>
-            <span class="column-name">Sunday - 8:00 - 14:00</span>
-          </div>
-          <v-divider vertical thickness="2" />
-          <div class="header-column">
-            <span v-if="loginStore.isAuthenticated" class="guest-name">
-              {{ `Welcome, ${loginStore.user}` }}
-            </span>
-            <span v-else class="guest-name">
-              Hi, Guest!
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
     <nav class="header-navigation">
       <ul class="header-navigation-list header-container">
         <li class="header-navigation-item" v-for="link in links" :key="link.route">
@@ -52,6 +14,81 @@
         </li>
       </ul>
     </nav>
+    <v-app-bar>
+      <v-app-bar-nav-icon
+        @click="drawer = !drawer"
+        class="d-flex d-sm-none"
+      />
+      <div class="header-container">
+        <div class="header-logo">
+          <v-img :src="logoIcon" height="64" width="80" />
+          <span class="project-name black">mind</span>
+          <span class="project-name green">masters</span>
+        </div>
+        <div class="header-row">
+          <div class="header-column">
+            <span class="column-name">Emergency Help</span>
+            <span class="column-name green phone">123-456-7890</span>
+          </div>
+          <v-divider vertical thickness="2" />
+          <div class="header-row hidden">
+            <v-img :src="mapPointer" height="35" width="35" />
+            <div class="header-column">
+              <span class="column-name">PO Box 16122 Collins Street West</span>
+              <span class="column-name">Victoria 8007 Australia</span>
+            </div>
+          </div>
+          <div class="header-row hidden">
+            <v-divider vertical thickness="2" />
+            <v-img :src="clock" height="30" width="30" />
+            <div class="header-column">
+              <span class="column-name">Monday - Saturday - 8:00 - 18:00</span>
+              <span class="column-name">Sunday - 8:00 - 14:00</span>
+            </div>
+            <v-divider vertical thickness="2" />
+            <div class="header-column">
+            <span v-if="loginStore.isAuthenticated" class="guest-name">
+              {{ `Welcome, ${loginStore.user}` }}
+            </span>
+              <span v-else class="guest-name">
+              Hi, Guest!
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <template v-slot:extension>
+        <nav class="header-navigation d-none d-sm-flex">
+          <ul class="header-navigation-list header-container">
+            <li class="header-navigation-item" v-for="link in links" :key="link.route">
+              <router-link :to="link.route" class="header-link">{{ link.text }}</router-link>
+            </li>
+            <li class="header-navigation-item">
+              <router-link
+                v-if="!loginStore.isAuthenticated"
+                :to="Routes.Login" class="header-link">Login
+              </router-link>
+              <span v-else class="header-link" @click="logout">Logout</span>
+            </li>
+          </ul>
+        </nav>
+      </template>
+
+    </v-app-bar>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list nav dense>
+        <v-list-item v-for="link in links" :key="link.route" link>
+          <v-list-item-title @click="drawer = false">
+            <router-link :to="link.route">{{ link.text }}</router-link>
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </header>
 </template>
 
@@ -84,14 +121,9 @@ export default {
       loginStore.logout();
     };
 
-    const toggleDrawer = () => {
-      drawer.value = !drawer.value;
-    };
-
     return {
       loginStore,
       logout,
-      toggleDrawer,
       drawer,
       logoIcon,
       mapPointer,
