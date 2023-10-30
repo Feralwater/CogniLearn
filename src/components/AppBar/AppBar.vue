@@ -13,13 +13,13 @@
   </v-app-bar>
   <v-navigation-drawer
     v-model="drawer"
-    absolute
+    class="drawer"
     temporary
   >
-    <v-list nav dense>
-      <v-list-item v-for="link in links" :key="link.route" link>
-        <v-list-item-title @click="drawer = false">
-          <router-link :to="link.route">{{ link.text }}</router-link>
+    <v-list>
+      <v-list-item v-for="link in links" :key="link.route">
+        <v-list-item-title @click="drawer = false" class="nav-link">
+          <router-link :to="link.route" class="router-link">{{ link.text }}</router-link>
         </v-list-item-title>
       </v-list-item>
     </v-list>
@@ -38,8 +38,23 @@
 
 @media screen and (max-width: 599px) {
   :global(.v-toolbar__extension) {
-    display: none;
+    height: 0 !important;
   }
+}
+
+.drawer {
+  top: 62px !important;
+  background-color: var(--secondary-60);
+}
+
+.nav-link {
+  padding: 10px 20px;
+}
+
+.router-link {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 16px;
 }
 
 </style>
