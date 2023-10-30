@@ -35,9 +35,6 @@ const props = defineProps<{
 
 .navigation {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: var(--primary);
 }
 
@@ -45,8 +42,10 @@ const props = defineProps<{
   display: flex;
   padding: 0;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: var(--primary);
 }
 
