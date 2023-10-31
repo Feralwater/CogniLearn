@@ -22,6 +22,13 @@
           <router-link :to="link.route" class="router-link">{{ link.text }}</router-link>
         </v-list-item-title>
       </v-list-item>
+      <v-list-item>
+        <router-link
+          v-if="!loginStore.isAuthenticated"
+          :to="Routes.Login" class="router-link nav-link">Login
+        </router-link>
+        <span v-else class="router-link nav-link" @click="logout">Logout</span>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
