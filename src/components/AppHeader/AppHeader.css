@@ -57,6 +57,12 @@
   display: none;
 }
 
+.guest-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
 @media screen and (min-width: 1250px) {
   .hidden {
     display: flex;
