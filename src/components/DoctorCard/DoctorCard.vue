@@ -22,11 +22,9 @@ export default defineComponent({
 
 <template>
   <v-card class="doctor-card">
-    <v-img :src="localDoctor.photo" class="doctor-card-image" height="200"></v-img>
-
-    <v-card-title class="headline">{{ localDoctor.name }}</v-card-title>
+    <v-img :src="localDoctor.photo" height="200"></v-img>
+    <v-card-title>{{ localDoctor.name }}</v-card-title>
     <v-card-subtitle>{{ localDoctor.speciality }}</v-card-subtitle>
-
     <v-card-text>
       <rating-stars :rating="localDoctor.rating" />
       {{ localDoctor.reviews }} Reviews

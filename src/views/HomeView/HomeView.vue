@@ -30,9 +30,7 @@ import { doctors } from "@/data/doctors";
 
     <section>
       <h2 class="doctors--header">Our Doctors</h2>
-      <div class="home-slider">
         <slide-group :sliderItems="doctors" />
-      </div>
     </section>
   </div>
 </template>

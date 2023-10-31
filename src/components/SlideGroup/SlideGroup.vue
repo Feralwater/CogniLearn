@@ -30,7 +30,6 @@ export default defineComponent({
     <v-slide-group-item
       v-for="doctor in sliderItems"
       :key="doctor.id"
-      v-slot="{ isSelected, toggle, selectedClass }"
     >
       <doctor-card :doctor="doctor" />
     </v-slide-group-item>
