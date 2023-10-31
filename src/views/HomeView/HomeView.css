@@ -1,29 +1,73 @@
-.home-banner {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 100px 0 0 120px;
-  gap: 20px;
+.banner-content {
+  text-align: center;
+  padding: 136px 0 0 0;
 }
 
-.home-heading {
-  font-size: 2.5rem;
+.banner-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--secondary);
+}
+
+.banner-subtitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--secondary);
+}
+
+.banner-description {
+  font-size: 18px;
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
+  color: var(--secondary);
 }
 
-.btn {
-  cursor: pointer;
-  width: fit-content;
+.banner-link {
+  color: var(--primary);
+  text-decoration: none;
+  padding: 0 0 4px 0;
+  border-bottom: 1px solid var(--primary);
 }
 
-.home-heading-2 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+.banner-quote {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: var(--secondary);
 }
 
-.home-slider {
-  width: 100%;
-  margin: 0 auto;
+.quote-text {
+  margin-bottom: 10px;
+}
+
+.quote-author {
+  color: var(--secondary);
+}
+
+
+@media screen and (max-width: 768px) {
+  .banner-content {
+    padding: 40px 0 0 0;
+  }
+
+  .banner-subtitle {
+    font-size: 20px;
+  }
+
+  .banner-description {
+    font-size: 16px;
+  }
+
+  .banner-quote {
+    font-size: 18px;
+  }
+
+  .quote-text {
+    font-size: 16px;
+  }
+
+  .quote-author {
+    font-size: 16px;
+  }
 }
