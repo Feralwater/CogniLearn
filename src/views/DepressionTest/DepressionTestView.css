@@ -27,17 +27,17 @@
 }
 
 .radio-card:hover {
-  background-color: var(--vt-c-green-soft);
+  background-color: var(--primary-soft);
 }
 
 .radio-card-selected {
-  background-color: var(--vt-c-green);
+  background-color: var(--primary);
   color: white;
-  border-color: var(--vt-c-green);
+  border-color: var(--primary);
 }
 
 .radio-card-selected:hover {
-  background-color: var(--vt-c-green-mute);
+  background-color: var(--primary-mute);
 }
 
 .radio-card input[type="radio"] {
@@ -51,7 +51,7 @@ button.prev-button {
   padding: 8px 16px;
   cursor: pointer;
   font-size: 16px;
-  color: var(--vt-c-green);
+  color: var(--primary);
 }
 
 button.next-button:disabled,
@@ -68,7 +68,7 @@ button.prev-button:disabled:hover {
 
 button.next-button:hover,
 button.prev-button:hover {
-  color: var(--vt-c-green-mute);
+  color: var(--primary-mute);
 }
 
 button.next-button {

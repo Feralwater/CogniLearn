@@ -146,7 +146,7 @@ export default {
 }
 
 .search-input:global(.v-field--variant-filled .v-field__overlay) {
-  background-color: var(--vt-c-green-soft);
+  background-color: var(--primary-soft);
 }
 
 </style>

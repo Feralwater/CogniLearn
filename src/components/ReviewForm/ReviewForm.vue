@@ -44,7 +44,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: var(--vt-c-white-mute);
+  background-color: var(--white-mute);
   border: 1px solid var(--vt-c-divider-light-1);
   border-radius: 5px;
 }

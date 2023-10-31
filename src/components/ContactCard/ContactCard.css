@@ -7,7 +7,7 @@
 .contactCard--header {
   padding: 8px 16px;
   background-color: var(--vt-c-gray);
-  color: var(--vt-c-green);
+  color: var(--primary);
 }
 
 .contactCard--data {

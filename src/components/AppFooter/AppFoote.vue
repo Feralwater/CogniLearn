@@ -27,14 +27,14 @@ export default defineComponent({
 
 <style scoped>
 .footer {
-  background-color: var(--vt-c-green);
+  background-color: var(--primary);
   padding: 20px 15px;
   text-align: center;
   margin: auto 0 0 0;
 }
 
 .footer p {
-  color: var(--vt-c-white);
+  color: var(--white);
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -44,11 +44,11 @@ export default defineComponent({
 
 .footer a {
   display: inline-block;
-  color: var(--vt-c-white-soft);
+  color: var(--white-soft);
 }
 
 .footer a:hover {
-  color: var(--vt-c-white);
+  color: var(--white);
   transform: scale(1.05);
 }
 
