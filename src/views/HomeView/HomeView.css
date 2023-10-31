@@ -9,7 +9,6 @@
 .hero-text {
   z-index: 0;
   width: 40%;
-  /*top: 10%;*/
   position: relative;
   border: 2px solid var(--secondary);
   padding: 0 30px;
@@ -72,9 +71,48 @@
   font-size: 14px;
 }
 
+.doctors--header {
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: 50px;
+  letter-spacing: 4px;
+  color: var(--secondary);
+  text-align: center;
+}
+
 @media screen and (max-width: 599px) {
   .hero {
     margin: 56px 0 0 0;
   }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 26px;
+  }
+
+  .hero-text h2 {
+    font-size: 16px;
+  }
+
+  .quote-text {
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .quote-author {
+    font-size: 12px;
+  }
+
+  .hero-link {
+    font-size: 14px;
+    bottom: -11px;
+  }
+
+  .doctors--header {
+    font-size: 26px;
+  }
 }
+
 

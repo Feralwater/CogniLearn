@@ -29,7 +29,7 @@ import { doctors } from "@/data/doctors";
     </v-img>
 
     <section>
-      <h2>Our Doctors</h2>
+      <h2 class="doctors--header">Our Doctors</h2>
       <div class="home-slider">
         <slide-group :sliderItems="doctors" />
       </div>
