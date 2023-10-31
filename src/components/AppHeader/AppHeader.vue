@@ -18,7 +18,7 @@ const loginStore = useLoginStore();
       <div class="header-row">
         <div class="header-column">
           <span>Emergency Help</span>
-          <span class="column-name green phone">123-456-7890</span>
+          <a href="tel:+1 (234) 567-890" class="column-name green phone">+1 (234) 567-890</a>
         </div>
         <v-divider vertical thickness="2" />
         <div class="header-row hidden">
@@ -38,10 +38,10 @@ const loginStore = useLoginStore();
           <v-divider vertical thickness="2" />
         </div>
         <div class="header-column">
-            <span v-if="loginStore.isAuthenticated">
+            <span v-if="loginStore.isAuthenticated" class="guest-name">
               {{ `Welcome, ${loginStore.user}` }}
             </span>
-          <span v-else class="guest-name">
+          <span v-else>
               Hi, Guest!
             </span>
         </div>

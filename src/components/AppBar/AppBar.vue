@@ -50,8 +50,8 @@
 }
 
 .drawer {
-  top: 62px !important;
-  height: calc(100% - 62px) !important;
+  top: 56px !important;
+  height: calc(100% - 56px) !important;
   background-color: var(--secondary-60);
 }
 
