@@ -44,8 +44,8 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: var(--white-mute);
-  border: 1px solid var(--vt-c-divider-light-1);
+  background-color: var(--white);
+  border: 1px solid var(--black);
   border-radius: 5px;
 }
 
@@ -53,7 +53,7 @@ export default {
   width: 100%;
   margin: 10px 0;
   padding: 10px;
-  border: 1px solid var(--vt-c-divider-light-1);
+  border: 1px solid var(--black);
   border-radius: 3px;
 }
 

@@ -44,7 +44,7 @@ export default defineComponent({
 
 .footer a {
   display: inline-block;
-  color: var(--white-soft);
+  color: var(--white);
 }
 
 .footer a:hover {

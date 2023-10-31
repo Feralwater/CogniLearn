@@ -117,7 +117,7 @@ export default {
 .header {
   font-size: 32px;
   font-weight: bold;
-  color: var(--vt-c-text-light-1);
+  color: var(--black);
 }
 
 .headerContainer {

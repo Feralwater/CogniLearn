@@ -1,5 +1,5 @@
 .heading {
-  color: var(--vt-c-text-light-1);
+  color: var(--black);
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -9,7 +9,7 @@
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: var(--vt-c-text-dark-1);
+  background-color: var(--black);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }

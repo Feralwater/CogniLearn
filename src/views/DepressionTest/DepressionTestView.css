@@ -18,7 +18,7 @@
 }
 
 .radio-card {
-  border: 1px solid var(--vt-c-divider-light-1);
+  border: 1px solid var(--black);
   border-radius: 4px;
   padding: 10px;
   margin: 5px 0;
@@ -56,13 +56,13 @@ button.prev-button {
 
 button.next-button:disabled,
 button.prev-button:disabled {
-  color: var(--vt-c-divider-light-1);
+  color: var(--black);
   cursor: not-allowed;
 }
 
 button.next-button:disabled:hover,
 button.prev-button:disabled:hover {
-  color: var(--vt-c-divider-light-1);
+  color: var(--black);
   cursor: not-allowed;
 }
 
