@@ -1,10 +1,56 @@
 <template>
-  <div class="chart-container">
-    <div class="chart">
-      <h1 class="chart-header">Average scores of the last 10 years</h1>
-    <Chart :data="chartData" :options="options" />
-    </div>
-  </div>
+  <v-container class="statistics">
+    <h1 class="statistics-header">Mental Health Symptom Trends: You Are Not Alone</h1>
+    <v-row>
+      <v-col md="6">
+        <Chart :data="chartData" :options="options" />
+      </v-col>
+      <v-col md="6">
+        <div class="statistics-description">
+          <p>
+            In a world that often makes us feel isolated and overwhelmed, it's crucial to remember that
+            <strong class="strong">you are not alone</strong> in your mental health journey. We are dedicated to
+            providing support,
+            understanding, and care to those who seek it.
+          </p>
+          <v-list class="list">
+            <v-list-item class="list-item"><strong class="strong">Raise Awareness:</strong> Understanding that mental
+              health challenges affect a
+              significant portion of
+              the population can help reduce the stigma surrounding mental health issues.
+            </v-list-item>
+            <v-list-item class="list-item"><strong class="strong">Empowerment Through Knowledge:</strong> Knowledge is a
+              powerful tool. By being
+              informed about the
+              prevalence and trends of mental health symptoms, you can better navigate your own mental health journey or
+              provide support to loved ones.
+            </v-list-item>
+            <v-list-item class="list-item"><strong class="strong">Highlight Progress and Hope:</strong> While mental
+              health challenges can be daunting, it's important to
+              see the positive side too. With the right support and resources, healing and growth are possible.
+            </v-list-item>
+            <v-list-item class="list-item"><strong class="strong">Guide Our Clinic's Approach:</strong> The data
+              presented in this chart helps our
+              clinic continually
+              improve our services and tailor our approach to meet the evolving needs of our community. Your experiences
+              and feedback shape the way we provide care, ensuring it remains relevant and effective.
+            </v-list-item>
+          </v-list>
+        </div>
+      </v-col>
+    </v-row>
+    <v-row class="expertise">
+      <v-col md="4">
+        <div>30000+ lives changed</div>
+      </v-col>
+      <v-col md="4">
+        <div>50+ years of experience</div>
+      </v-col>
+      <v-col md="4">
+        <div>10+ world-class experts</div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -17,8 +63,8 @@ import {
   Title,
   Tooltip,
   Legend
-} from 'chart.js'
-import { Line as Chart } from 'vue-chartjs'
+} from "chart.js";
+import { Line as Chart } from "vue-chartjs";
 
 ChartJS.register(
   CategoryScale,
@@ -28,49 +74,49 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-)
+);
 
 export const options = {
   responsive: true,
-  maintainAspectRatio: false,
-}
+  maintainAspectRatio: false
+};
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Chart,
+    Chart
   },
   data() {
     return {
       chartData: {
-        labels: ['10 years', '20 years', '30 years', '40 years', '50 years', '60 years', '70 years', '80 years', '90 years'],
+        labels: ["1980", "1985", "1990", "1995", "2000", "2005", "2010", "2015", "2020"],
         datasets: [
           {
-            label: 'Depression level',
-            backgroundColor: '#f87979',
-            data: [5, 40, 35, 65, 65, 50, 30, 20, 10],
+            label: "Depression level",
+            backgroundColor: "#f87979",
+            data: [26, 32, 36, 33, 48, 52, 60, 65, 70]
           },
           {
-            label: 'Anxiety level',
-            backgroundColor: '#79a5f8',
-            data: [65, 55, 45, 35, 25, 15, 5, 95, 85],
+            label: "Anxiety level",
+            backgroundColor: "#79a5f8",
+            data: [2, 8, 15, 16, 23, 42, 35, 28, 27]
           },
           {
-            label: 'Stress level',
-            backgroundColor: '#e1f879',
-            data: [15, 25, 35, 45, 55, 65, 75, 85, 95],
+            label: "Stress level",
+            backgroundColor: "#e1f879",
+            data: [15, 25, 20, 38, 44, 40, 29, 55, 60]
           },
           {
-            label: 'Anger level',
-            backgroundColor: '#a879f8',
-            data: [4, 8, 15, 16, 23, 42, 56, 77, 88],
-          },
+            label: "Anger level",
+            backgroundColor: "#a879f8",
+            data: [45, 35, 25, 15, 25, 45, 56, 67, 74]
+          }
         ]
       },
       options
-    }
-  },
-}
+    };
+  }
+};
 </script>
 
 <style scoped>
