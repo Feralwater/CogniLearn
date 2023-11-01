@@ -8,7 +8,7 @@
 
 .result-description {
   font-size: 24px;
-  color: var(--vt-c-text-light-1);
+  color: var(--secondary);
   text-align: center;
   margin: 20px 60px;
 }

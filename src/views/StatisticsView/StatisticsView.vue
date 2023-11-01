@@ -10,29 +10,24 @@
           <p>
             In a world that often makes us feel isolated and overwhelmed, it's crucial to remember that
             <strong class="strong">you are not alone</strong> in your mental health journey. We are dedicated to
-            providing support,
-            understanding, and care to those who seek it.
+            providing support, understanding, and care to those who seek it.
           </p>
           <v-list class="list">
             <v-list-item class="list-item"><strong class="strong">Raise Awareness:</strong> Understanding that mental
-              health challenges affect a
-              significant portion of
-              the population can help reduce the stigma surrounding mental health issues.
+              health challenges affect a significant portion of the population can help reduce the stigma surrounding
+              mental health issues.
             </v-list-item>
             <v-list-item class="list-item"><strong class="strong">Empowerment Through Knowledge:</strong> Knowledge is a
-              powerful tool. By being
-              informed about the
-              prevalence and trends of mental health symptoms, you can better navigate your own mental health journey or
-              provide support to loved ones.
+              powerful tool. By being informed about the prevalence and trends of mental health symptoms, you can better
+              navigate your own mental health journey or provide support to loved ones.
             </v-list-item>
             <v-list-item class="list-item"><strong class="strong">Highlight Progress and Hope:</strong> While mental
-              health challenges can be daunting, it's important to
-              see the positive side too. With the right support and resources, healing and growth are possible.
+              health challenges can be daunting, it's important to see the positive side too. With the right support and
+              resources, healing and growth are possible.
             </v-list-item>
             <v-list-item class="list-item"><strong class="strong">Guide Our Clinic's Approach:</strong> The data
-              presented in this chart helps our
-              clinic continually
-              improve our services and tailor our approach to meet the evolving needs of our community. Your experiences
+              presented in this chart helps our clinic continually improve our services and tailor our approach to meet
+              the evolving needs of our community. Your experiences
               and feedback shape the way we provide care, ensuring it remains relevant and effective.
             </v-list-item>
           </v-list>
