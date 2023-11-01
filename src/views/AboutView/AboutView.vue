@@ -1,7 +1,7 @@
 <template>
   <v-container class="about">
     <v-row>
-      <v-col cols="10">
+      <v-col>
         <h1 class="heading">Welcome to Our Mental Health Clinics</h1>
         <p class="description">
           We are a dedicated team of experienced professionals who are passionate about supporting your mental
@@ -10,8 +10,8 @@
           to better mental health.
         </p>
       </v-col>
-      <v-col cols="2">
-        <v-card>
+      <v-col>
+        <v-card min-width="288px">
           <v-img :src="director" cover />
           <v-card-title>
             Dr. Mindy Klein
