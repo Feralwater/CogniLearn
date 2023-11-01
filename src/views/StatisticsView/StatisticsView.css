@@ -39,9 +39,24 @@
 .statistics-description {
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px var(--secondary-60);
 }
 
+.expertise .achievement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  color: var(--primary);
+  font-size: 18px;
+  margin: 10px;
+}
+
+.expertise .achievement v-icon {
+  font-size: 36px;
+}
 
 @media screen and (max-width: 599px) {
   .statistics {

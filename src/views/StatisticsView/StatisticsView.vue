@@ -41,13 +41,22 @@
     </v-row>
     <v-row class="expertise">
       <v-col md="4">
-        <div>30000+ lives changed</div>
+        <div class="achievement">
+          <v-icon size="48">mdi-account-group</v-icon>
+          <div>30000+ lives changed</div>
+        </div>
       </v-col>
       <v-col md="4">
-        <div>50+ years of experience</div>
+        <div class="achievement">
+          <v-icon size="48">mdi-clock-time-three-outline</v-icon>
+          <div>50+ years of experience</div>
+        </div>
       </v-col>
       <v-col md="4">
-        <div>10+ world-class experts</div>
+        <div class="achievement">
+          <v-icon size="48">mdi-star-circle</v-icon>
+          <div>10+ world-class experts</div>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -93,22 +102,22 @@ export default {
         datasets: [
           {
             label: "Depression level",
-            backgroundColor: "#f87979",
+            backgroundColor: "#e81111",
             data: [26, 32, 36, 33, 48, 52, 60, 65, 70]
           },
           {
             label: "Anxiety level",
-            backgroundColor: "#79a5f8",
+            backgroundColor: "#2f72ea",
             data: [2, 8, 15, 16, 23, 42, 35, 28, 27]
           },
           {
             label: "Stress level",
-            backgroundColor: "#e1f879",
+            backgroundColor: "#16b211",
             data: [15, 25, 20, 38, 44, 40, 29, 55, 60]
           },
           {
             label: "Anger level",
-            backgroundColor: "#a879f8",
+            backgroundColor: "#e39a3c",
             data: [45, 35, 25, 15, 25, 45, 56, 67, 74]
           }
         ]

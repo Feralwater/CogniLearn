@@ -27,7 +27,7 @@ export default defineComponent({
 
 <style scoped>
 .footer {
-  background-color: var(--primary);
+  background-color: var(--secondary);
   padding: 20px 15px;
   text-align: center;
   margin: auto 0 0 0;
