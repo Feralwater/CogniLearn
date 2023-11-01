@@ -1,7 +1,6 @@
 :root {
   --primary-soft: rgba(20, 160, 157, 0.3);
   --primary-mute: #098583;
-  --vt-c-important: #d50f0f;
   --vt-c-guest: #f5a623;
 
   --vt-c-gray: #eaeaea;
@@ -16,5 +15,6 @@
   --black: #070707;
   --border: #e0e0e0;
   --background: #f4f4f4;
+  --important: #d50f0f;
 }
 

@@ -14,7 +14,8 @@
   background-color: var(--background);
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--secondary-60);
+  min-width: 500px;
 }
 
 .list-item {
@@ -50,16 +51,39 @@
   padding: 20px;
   text-align: center;
   color: var(--primary);
-  font-size: 18px;
+  font-size: 16px;
   margin: 10px;
 }
 
-.expertise .achievement v-icon {
-  font-size: 36px;
+.expertise .achievement i {
+  font-size: 48px;
+}
+
+.important {
+  color: var(--important);
+  font-size: 18px;
 }
 
 @media screen and (max-width: 599px) {
   .statistics {
     margin-top: 56px;
+  }
+
+  .list {
+    min-width: 100%;
+  }
+
+  .important {
+    font-size: 14px;
+  }
+
+  .expertise .achievement {
+    font-size: 12px;
+    padding: 6px;
+    margin: 0;
+  }
+
+  .expertise .achievement i {
+    font-size: 28px;
   }
 }

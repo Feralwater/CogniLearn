@@ -42,20 +42,20 @@
     <v-row class="expertise">
       <v-col md="4">
         <div class="achievement">
-          <v-icon size="48">mdi-account-group</v-icon>
-          <div>30000+ lives changed</div>
+          <v-icon>mdi-account-group</v-icon>
+          <div><span class="important">30000+</span> lives changed</div>
         </div>
       </v-col>
       <v-col md="4">
         <div class="achievement">
-          <v-icon size="48">mdi-clock-time-three-outline</v-icon>
-          <div>50+ years of experience</div>
+          <v-icon>mdi-clock-time-three-outline</v-icon>
+          <div><span class="important">50+</span> years of experience</div>
         </div>
       </v-col>
       <v-col md="4">
         <div class="achievement">
-          <v-icon size="48">mdi-star-circle</v-icon>
-          <div>10+ world-class experts</div>
+          <v-icon>mdi-star-circle</v-icon>
+          <div><span class="important">10+</span> world-class experts</div>
         </div>
       </v-col>
     </v-row>
