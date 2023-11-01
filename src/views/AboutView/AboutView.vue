@@ -1,33 +1,50 @@
 <template>
-  <div class="container">
-    <h1 class="heading">About Us</h1>
-    <p class="paragraph">
-      We are a big team of experts with a wealth of experience and knowledge in the field of psychology. Our mission is
-      to provide help, support, and education to individuals seeking to understand and improve their mental well-being.
-    </p>
-    <p class="paragraph" >
-      With years of practice and a deep understanding of human behavior, our team is dedicated to making a positive
-      impact on people's lives. We believe in the power of knowledge and self-awareness, and our goal is to empower our
-      users to lead happier and more fulfilling lives.
-    </p>
-    <p class="paragraph" >
-      Whether you're dealing with stress, anxiety, depression, or simply looking to grow personally, we are here to
-      support you every step of the way. Our platform offers a range of resources, tools, and expert guidance to help
-      you on your journey towards mental wellness.
-    </p>
-    <p class="paragraph" >
-      At our core, we believe in the transformative power of education and the importance of breaking down the barriers
-      surrounding mental health. Together, we can build a community that fosters understanding, empathy, and growth.
-    </p>
-    <p class="paragraph" >
-      Thank you for choosing us to be a part of your mental health journey. We look forward to supporting you and
-      helping you achieve your goals.
-    </p>
-  </div>
+  <v-container class="about">
+    <v-row>
+      <v-col cols="10">
+        <h1 class="heading">Welcome to Our Mental Health Clinics</h1>
+        <p class="description">
+          We are a dedicated team of experienced professionals who are passionate about supporting your mental
+          well-being. With years of expertise and a commitment to your mental health, we are here to help you navigate
+          life's challenges and find the balance you seek. Trust our caring "mind masters" to guide you on your journey
+          to better mental health.
+        </p>
+      </v-col>
+      <v-col cols="2">
+        <v-card>
+          <v-img :src="director" cover />
+          <v-card-title>
+            Dr. Mindy Klein
+          </v-card-title>
+          <v-card-subtitle class="pt-4">
+            Neurologist, Psychiatrist PhD
+            <v-icon class="ml-2">mdi-school</v-icon>
+          </v-card-subtitle>
+
+          <v-card-text>
+            Hi. I'm Dr. Mindy Klein, director of Mind Masters.
+            If you are looking for a safe place to talk about your mental health,
+            you've come to the right place.
+          </v-card-text>
+
+          <v-card-actions>
+            <a href="tel:+1234567890" class="link">
+              <v-icon size="18" left>mdi-cellphone</v-icon>
+              call me
+            </a>
+            <a href="mailto:fackeMail@mindmasters.com" class="link">
+              <v-icon size="18" left>mdi-email</v-icon>
+              email me
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
-<script>
-export default {};
+<script setup lang="ts">
+import director from "@/assets/images/director/director.png";
 </script>
 
 <style scoped>
