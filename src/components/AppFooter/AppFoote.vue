@@ -14,42 +14,35 @@ export default defineComponent({
 
 <template>
   <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          We are here to help you.
-          <router-link :to="Routes.Contact">Contact us</router-link>
-        </p>
-      </div>
-    </div>
+    <p>
+      We are here to help you.
+      <router-link :to="Routes.Contact">Contact us</router-link>
+    </p>
   </footer>
 </template>
 
 <style scoped>
 .footer {
   background-color: var(--secondary);
-  padding: 20px 15px;
+  color: var(--white);
+  padding: 15px 10px;
   text-align: center;
   margin: auto 0 0 0;
 }
 
 .footer p {
-  color: var(--white);
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
+  font-size: 14px;
+  margin: 0;
 }
 
 .footer a {
-  display: inline-block;
-  color: var(--white);
+  color: var(--tertiary);
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 4px;
 }
 
 .footer a:hover {
-  color: var(--white);
-  transform: scale(1.05);
+  text-decoration: underline;
 }
-
 </style>
