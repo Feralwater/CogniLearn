@@ -1,9 +1,6 @@
 :root {
-  --primary-soft: rgba(20, 160, 157, 0.3);
-  --primary-mute: #098583;
-  --vt-c-guest: #f5a623;
-/*  /////////////////////////////////////////////////  */
   --primary: #279eff;
+  --primary-soft: #e6f4ff;
   --secondary: #0c356a;
   --secondary-60: rgba(12, 53, 106, 0.6);
   --tertiary: #40f8ff;
