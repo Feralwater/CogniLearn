@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import depression from "@/assets/images/quiz/depression.jpeg";
+import interview from "@/assets/images/quiz/interview.png";
 import { Routes } from "@/router/routes";
-
-const startQuiz = () => {
-  window.location.href = Routes.DepressionTest;
-};
 
 const listItems = [
   {
@@ -55,23 +51,23 @@ const listColors = [
 <template>
   <v-container class="quiz">
     <v-row align="center">
-      <v-col cols="12" md="6">
-        <h1 class="title">Begin Your Mental Health Journey: Take the Depression Test</h1>
+      <v-col cols="12" md="9">
+        <h1 class="heading">Begin Your Mental Health Journey: Take the Depression Test</h1>
         <p class="subtitle">Do You Have Temporary Low Mood or Real Depression?</p>
         <p class="description">
           Understanding your feelings is the first step in finding the support and solutions you need. This
           quick assessment will provide you with valuable information to make informed decisions about your mental
           health. It's time to prioritize your
-          mental well-being - start the test now!
+          mental well-being -
+          <router-link :to="Routes.DepressionTest" class="quiz-link">
+            start the test now!
+          </router-link>
         </p>
-        <v-btn class="start-button" color="primary" @click="startQuiz">Start Quiz</v-btn>
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="3">
         <v-img
-          :src="depression"
-          alt="Depression Image"
-          class="rounded-lg depression-image"
-          max-height="400"
+          :src="interview"
+          alt="doctor is interviewing a patient"
         />
       </v-col>
     </v-row>
@@ -83,7 +79,7 @@ const listColors = [
         :style="{'--accent-color': listColors[index]}"
       >
         <div>
-          <v-icon class="icon" size="24">{{ item.icon }}</v-icon>
+          <v-icon class="icon" size="32">{{ item.icon }}</v-icon>
         </div>
         <div class="title">{{ item.title }}</div>
         <div class="descr">{{ item.subtitle }}</div>

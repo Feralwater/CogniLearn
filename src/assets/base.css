@@ -2,8 +2,6 @@
   --primary-soft: rgba(20, 160, 157, 0.3);
   --primary-mute: #098583;
   --vt-c-guest: #f5a623;
-
-  --vt-c-gray: #eaeaea;
 /*  /////////////////////////////////////////////////  */
   --primary: #279eff;
   --secondary: #0c356a;
@@ -16,5 +14,6 @@
   --border: #e0e0e0;
   --background: #f4f4f4;
   --important: #d50f0f;
+  --gray: #777777;
 }
 
