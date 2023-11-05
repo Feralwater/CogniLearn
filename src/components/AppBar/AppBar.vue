@@ -85,6 +85,7 @@ export default {
     const logoIcon = logo;
     const links = [
       { text: "Home", route: Routes.Home },
+      { text: "Quiz", route: Routes.Quiz },
       { text: "Statistics", route: Routes.Statistics },
       { text: "Reviews", route: Routes.Reviews },
       { text: "About", route: Routes.About },
