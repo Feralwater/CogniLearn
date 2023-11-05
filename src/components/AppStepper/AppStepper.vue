@@ -14,34 +14,16 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="stepper">
-    <div v-for="(step, index) in props.steps" :key="index" class="step" :class="{ 'active': index === props.currentStep }">
-      {{ step.title }}
+  <div class="stepper-wrapper">
+    <div class="stepper-item" v-for="(step, index) in props.steps" :key="index" :class="{ 'completed': index <= props.currentStep }">
+      <div class="step-counter">
+        {{ index + 1 }}
+      </div>
+      <div class="step-name">{{ step.title }}</div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.stepper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f0f0f0;
-  padding: 10px;
-}
-
-.step {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.step.active {
-  background-color: #007bff;
-  color: #fff;
-}
+@import "./AppStepper.css";
 </style>

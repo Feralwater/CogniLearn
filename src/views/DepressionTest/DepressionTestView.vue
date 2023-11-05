@@ -2,7 +2,7 @@
   <v-container class="test">
     <app-stepper :steps="steps" :current-step="currentStep" />
 
-    <div class="quiz-container">
+    <div class="quiz-container" v-if="currentStep === 0">
       <v-card density="default" class="quiz-card">
         <v-card-title>
           <div class="question-number">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</div>
@@ -57,23 +57,25 @@
         </v-btn>
       </div>
     </div>
+    <div v-if="testResult">
+      {{ testResult }}
+    </div>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 import { depressionTestQuestions } from "@/data/depressionQuestions";
 import { getTestResult } from "@/utils/testResultProcessor";
-import { Routes } from "@/router/routes";
 import AppStepper from "@/components/AppStepper/AppStepper.vue";
-import router from "@/router";
 
 const steps = [
-  { title: "Take Test" },
+  { title: "Take a Test" },
   { title: "Fill Details" },
-  { title: "Get Results" }
+  { title: "Get the Results" }
 ];
-const currentStep = ref(0);
+
+const testResult = ref("");
 const questions = ref(depressionTestQuestions);
 const currentQuestionIndex = ref(0);
 const answers = ref(Array(depressionTestQuestions.length));
@@ -81,6 +83,7 @@ const answers = ref(Array(depressionTestQuestions.length));
 const currentQuestion = computed(() => questions.value[currentQuestionIndex.value]);
 const progress = computed(() => ((currentQuestionIndex.value + 1) / questions.value.length) * 100);
 const currentAnswer = computed(() => answers.value[currentQuestionIndex.value]);
+const currentStep = computed(() => testResult.value ? 1 : 0);
 
 const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
@@ -95,11 +98,7 @@ const prevQuestion = () => {
 };
 
 const submitTest = () => {
-  const result = getTestResult(answers.value);
-  router.push({
-    path: Routes.Results,
-    query: { result }
-  });
+  testResult.value = getTestResult(answers.value);
 };
 </script>
 
