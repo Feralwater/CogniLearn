@@ -3,7 +3,7 @@ import { getTestResultDescription } from "@/utils/testResultProcessor";
 import html2pdf from "html2pdf.js";
 import { usePatientStore } from "@/stores/patient";
 import type { PropType } from "vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import logo from "@/assets/icons/logo.svg";
 
 
@@ -22,8 +22,11 @@ const patientId = computed(() => {
   return Math.floor(Math.random() * 1000000000);
 });
 const habits = computed(() => {
-  return patient.badHabits.join(", ")
+  return patient.badHabits.join(", ");
 });
+const testData = ref(new Date().toLocaleDateString());
+const testTime = ref(new Date().toLocaleTimeString());
+
 const downloadPDF = () => {
   const element = document.getElementById("element-to-pdf");
 
@@ -137,19 +140,27 @@ const downloadPDF = () => {
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="6">
-            Date: {{ new Date().toLocaleDateString() }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-calendar</v-icon>
+            <span class="registration-field">Date: </span>
+            <span class="registration-data">{{ testData }}</span>
           </v-col>
-          <v-col cols="6">
-            Time: {{ new Date().toLocaleTimeString() }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-clock</v-icon>
+            <span class="registration-field">Time: </span>
+            <span class="registration-data">{{ testTime }}</span>
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="6">
-            Test Result: {{ testResult }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-emoticon-sad-outline</v-icon>
+            <span class="registration-field">Test result: </span>
+            <span class="registration-data">{{ props.testResult }}</span>
           </v-col>
-          <v-col cols="6">
-            Description: {{ depressionResults }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-information-outline</v-icon>
+            <span class="registration-field">Test result description: </span>
+            <span class="registration-data">{{ depressionResults }}</span>
           </v-col>
         </v-row>
       </section>
