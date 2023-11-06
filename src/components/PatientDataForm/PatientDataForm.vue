@@ -137,7 +137,7 @@ const submitForm = () => {
       type="email"
       class="mb-1"
       density="compact"
-      :rules="[() => !!patient.email || 'Please enter your email']"
+      :rules="[v => !!v || 'Please enter your email', v => /.+@.+\..+/.test(v) || 'Please enter a valid email address']"
       counter="30"
     />
     <v-text-field
