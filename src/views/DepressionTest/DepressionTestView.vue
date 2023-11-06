@@ -66,22 +66,7 @@
       <patient-data-form :on-submit="onSubmitData" />
     </div>
 
-    <div>
-      <h1 class="heading">Your results</h1>
-      <p class="quiz-description">
-        {{ testResult }}
-      </p>
-      <p> {{ patient.firstName }}</p>
-      <p> {{ patient.lastName }}</p>
-      <p> {{ patient.gender }}</p>
-      <p> {{ patient.age }}</p>
-      <p> {{ patient.hasFamilyDepression }}</p>
-      <p> {{ patient.hoursOfSleep }}</p>
-      <p> {{ patient.hasMedicalTreatment }}</p>
-      <p> {{ patient.address }}</p>
-      <p> {{ patient.firstName }}</p>
-      <p> {{ patient.badHabits }}</p>
-    </div>
+    <test-results-view :testResult="testResult" />
   </v-container>
 </template>
 
@@ -91,9 +76,8 @@ import { depressionTestQuestions } from "@/data/depressionQuestions";
 import { getTestResult } from "@/utils/testResultProcessor";
 import AppStepper from "@/components/AppStepper/AppStepper.vue";
 import PatientDataForm from "@/components/PatientDataForm/PatientDataForm.vue";
-import { usePatientStore } from "@/stores/patient";
+import TestResultsView from "@/views/TestResultsView/TestResultsView.vue";
 
-const patient = usePatientStore();
 const steps = [
   { title: "Take a Test" },
   { title: "Fill Details" },
