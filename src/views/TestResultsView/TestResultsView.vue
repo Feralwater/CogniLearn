@@ -42,7 +42,7 @@ const downloadPDF = () => {
 </script>
 
 <template>
-  <v-container class="registration-container">
+  <v-container>
     <div class="registration-pdf">
       <div class="registration-note">
         Remember, that this test is not a diagnosis. It is just a tool to help you and your doctor to understand your
