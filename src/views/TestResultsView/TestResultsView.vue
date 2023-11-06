@@ -21,7 +21,9 @@ const depressionResults = computed(() => {
 const patientId = computed(() => {
   return Math.floor(Math.random() * 1000000000);
 });
-
+const habits = computed(() => {
+  return patient.badHabits.join(", ")
+});
 const downloadPDF = () => {
   const element = document.getElementById("element-to-pdf");
 
@@ -105,21 +107,30 @@ const downloadPDF = () => {
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="6">
-            Bad Habits: {{ patient.badHabits }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-smoking</v-icon>
+            <span class="registration-field">Habits: </span>
+            <span class="registration-data">{{ habits }}</span>
           </v-col>
-          <v-col cols="6">
-            Medications: {{ patient.hasMedicalTreatment }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-medical-bag</v-icon>
+            <span class="registration-field">Medical treatment: </span>
+            <span class="registration-data">{{ patient.hasMedicalTreatment ? "Yes" : "No" }}</span>
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="6">
-            Family History: {{ patient.hasFamilyDepression }}
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-heart-pulse</v-icon>
+            <span class="registration-field">Family mental issues</span>
+            <span class="registration-data">{{ patient.hasFamilyDepression ? "Yes" : "No" }}</span>
           </v-col>
-          <v-col cols="6">
-            Medical History:
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-pill</v-icon>
+            <span class="registration-field">Details: </span>
+            <span class="registration-data">{{ patient.medicalTreatmentDetails }}</span>
           </v-col>
         </v-row>
+
         <v-row>
           <v-col cols="12" class="registration-heading">
             Test Info
