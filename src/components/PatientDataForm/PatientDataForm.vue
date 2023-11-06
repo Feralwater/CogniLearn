@@ -159,7 +159,7 @@ const submitForm = () => {
         color="primary"
         value="Alcohol"
         density="compact"
-        @click="patient.setBadHabits('Alcohol')"
+        @change="patient.removeNoneBadHabits()"
         :rules="[() => !!patient.badHabits.length || 'Please select your bad habits']"
       />
       <v-checkbox
@@ -168,7 +168,7 @@ const submitForm = () => {
         color="primary"
         value="Drugs"
         density="compact"
-        @click="patient.setBadHabits('Drugs')"
+        @change="patient.removeNoneBadHabits()"
       />
       <v-checkbox
         v-model="patient.badHabits"
@@ -176,7 +176,7 @@ const submitForm = () => {
         color="primary"
         value="Smoking"
         density="compact"
-        @click="patient.setBadHabits('Smoking')"
+        @change="patient.removeNoneBadHabits()"
       />
       <v-checkbox
         v-model="patient.badHabits"
@@ -184,7 +184,7 @@ const submitForm = () => {
         color="primary"
         value="None"
         density="compact"
-        @click="patient.setBadHabits('None')"
+        @change="patient.setNoneBadHabits('None')"
       />
     </div>
     <div class="checkbox-question">

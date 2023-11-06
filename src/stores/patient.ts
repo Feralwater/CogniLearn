@@ -9,7 +9,7 @@ const initialPatient = {
   phone: "",
   email: "",
   address: "",
-  badHabits: [],
+  badHabits: [] as string[],
   hasFamilyDepression: "",
   hoursOfSleep: null,
   hasMedicalTreatment: "",
@@ -41,6 +41,14 @@ export const usePatientStore = defineStore("patient", {
 
     clearMedicalTreatmentDetails() {
       this.medicalTreatmentDetails = "";
+    },
+
+    setNoneBadHabits(badHabit: 'None') {
+      this.badHabits = [badHabit];
+    },
+
+    removeNoneBadHabits() {
+      this.badHabits = this.badHabits.filter(badHabit => badHabit !== 'None');
     }
   }
 });
