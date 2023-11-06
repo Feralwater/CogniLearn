@@ -9,7 +9,7 @@ const initialPatient = {
   phone: "",
   email: "",
   address: "",
-  badHabits: [""],
+  badHabits: [],
   hasFamilyDepression: false,
   hoursOfSleep: null,
   hasMedicalTreatment: false,

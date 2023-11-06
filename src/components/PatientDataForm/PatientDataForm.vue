@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePatientStore } from "@/stores/patient";
+import { ref } from "vue";
 
 const patient = usePatientStore();
 const props = defineProps({
@@ -8,10 +9,33 @@ const props = defineProps({
     required: true
   }
 });
+const formIsValid = ref(false);
+const validateForm = () => {
+  const isFormValid = (
+    !!patient.firstName &&
+    !!patient.lastName &&
+    !!patient.age &&
+    !!patient.gender &&
+    (patient.gender !== "Other" || !!patient.genderOther) &&
+    !!patient.phone &&
+    !!patient.email &&
+    !!patient.address &&
+    !!patient.hoursOfSleep &&
+    !!patient.badHabits.length &&
+    !!patient.hasFamilyDepression &&
+    !!patient.hasMedicalTreatment &&
+    (!patient.hasMedicalTreatment || !!patient.medicalTreatmentDetails)
+  );
 
+  formIsValid.value = isFormValid;
+
+  return isFormValid;
+};
 const submitForm = () => {
-  props.onSubmit();
-  patient.onReset();
+  if (validateForm()) {
+    props.onSubmit();
+    patient.onReset();
+  }
 };
 
 </script>
@@ -132,6 +156,7 @@ const submitForm = () => {
         value="Alcohol"
         density="compact"
         @click="patient.setBadHabits('Alcohol')"
+        :rules="[() => !!patient.badHabits.length || 'Please select your bad habits']"
       />
       <v-checkbox
         v-model="patient.badHabits"
@@ -166,6 +191,7 @@ const submitForm = () => {
         color="primary"
         value="Yes"
         density="compact"
+        :rules="[() => !!patient.hasFamilyDepression || 'Please select your family mental health issues']"
       />
       <v-checkbox
         v-model="patient.hasFamilyDepression"
