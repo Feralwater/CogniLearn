@@ -73,7 +73,7 @@ const submitForm = () => {
       variant="outlined"
       density="compact"
       class="mb-1"
-      :rules="[() => !!patient.age || 'Please enter your age']"
+      :rules="[() => !!patient.age || 'Please enter your age', v => v > 120 || 'Please enter a valid age', v => v < 0 || 'Please enter a valid age']"
     />
     <div class="mb-1 checkbox-question">
       <v-label>Specify your gender</v-label>
@@ -214,7 +214,7 @@ const submitForm = () => {
       variant="outlined"
       class="mb-1"
       density="compact"
-      :rules="[() => !!patient.hoursOfSleep || 'Please enter your hours of sleep']"
+      :rules="[() => !!patient.hoursOfSleep || 'Please enter your hours of sleep', v => v > 24 || 'Please enter a valid number', v => v < 0 || 'Please enter a valid number']"
     />
     <div class="checkbox-question">
       <v-label>Do you have any medical treatment?</v-label>
