@@ -7,6 +7,21 @@
   margin: 20px auto;
 }
 
+.heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--secondary);
+}
+
+.quiz-description {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: var(--gray);
+}
+
 .quiz-card {
   background-color: var(--primary-soft);
 }
@@ -70,6 +85,10 @@
 @media screen and (max-width: 599px) {
   .test {
     margin-top: 56px;
+  }
+
+  .heading {
+    font-size: 18px;
   }
 
   .question {

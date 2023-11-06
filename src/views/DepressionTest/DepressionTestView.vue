@@ -57,8 +57,13 @@
         </v-btn>
       </div>
     </div>
-    <div v-if="testResult">
-      {{ testResult }}
+    <div>
+      <h1 class="heading">Amazing! Now please fill in your details</h1>
+      <p class="quiz-description">
+        Note: we do not store any of your personal information, this is just for your doctor. If you will not print the
+        results, the data will not be stored anywhere.
+      </p>
+      <patient-data-form :on-submit="onSubmitData" />
     </div>
   </v-container>
 </template>
@@ -68,6 +73,7 @@ import { computed, ref } from "vue";
 import { depressionTestQuestions } from "@/data/depressionQuestions";
 import { getTestResult } from "@/utils/testResultProcessor";
 import AppStepper from "@/components/AppStepper/AppStepper.vue";
+import PatientDataForm from "@/components/PatientDataForm/PatientDataForm.vue";
 
 const steps = [
   { title: "Take a Test" },
@@ -76,6 +82,7 @@ const steps = [
 ];
 
 const testResult = ref("");
+const currentStep = ref(testResult.value ? 1 : 0);
 const questions = ref(depressionTestQuestions);
 const currentQuestionIndex = ref(0);
 const answers = ref(Array(depressionTestQuestions.length));
@@ -83,7 +90,8 @@ const answers = ref(Array(depressionTestQuestions.length));
 const currentQuestion = computed(() => questions.value[currentQuestionIndex.value]);
 const progress = computed(() => ((currentQuestionIndex.value + 1) / questions.value.length) * 100);
 const currentAnswer = computed(() => answers.value[currentQuestionIndex.value]);
-const currentStep = computed(() => testResult.value ? 1 : 0);
+
+const onSubmitData = () => currentStep.value = 2;
 
 const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
