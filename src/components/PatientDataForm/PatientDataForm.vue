@@ -217,14 +217,14 @@ const submitForm = () => {
       <v-checkbox
         v-model="patient.hasMedicalTreatment"
         label="Yes"
-        value="true"
+        :value=true
         density="compact"
         color="primary"
       />
       <v-checkbox
         v-model="patient.hasMedicalTreatment"
         label="No"
-        value="false"
+        :value=false
         density="compact"
         color="primary"
       />
