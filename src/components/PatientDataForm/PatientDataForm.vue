@@ -41,7 +41,7 @@ const submitForm = () => {
 </script>
 
 <template>
-  <v-form @submit.prevent="submitForm" class="patient-form">
+  <v-form @submit.prevent="submitForm" class="patient-form" @reset="patient.onReset">
     <v-text-field
       density="compact"
       v-model.trim="patient.firstName"
@@ -247,7 +247,7 @@ const submitForm = () => {
       counter="100"
     />
     <div class="actions">
-      <v-btn color="secondary" @click="patient.onReset()">Reset</v-btn>
+      <v-btn color="secondary" type="reset">Reset form</v-btn>
       <v-btn type="submit" color="primary">Submit information</v-btn>
     </div>
   </v-form>

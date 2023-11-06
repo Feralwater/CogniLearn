@@ -20,7 +20,19 @@ export const usePatientStore = defineStore("patient", {
   state: () => initialPatient,
   actions: {
     onReset() {
-      Object.assign(this, initialPatient);
+      this.firstName = "";
+      this.lastName = "";
+      this.age = null;
+      this.gender = "";
+      this.genderOther = "";
+      this.phone = "";
+      this.email = "";
+      this.address = "";
+      this.badHabits = [];
+      this.hasFamilyDepression = "";
+      this.hoursOfSleep = null;
+      this.hasMedicalTreatment = "";
+      this.medicalTreatmentDetails = "";
     },
 
     clearGenderOther() {
