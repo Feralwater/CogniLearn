@@ -83,6 +83,7 @@ const submitForm = () => {
         color="primary"
         value="Male"
         density="compact"
+        @change="patient.clearGenderOther()"
       />
       <v-checkbox
         v-model="patient.gender"
@@ -90,6 +91,7 @@ const submitForm = () => {
         color="primary"
         value="Female"
         density="compact"
+        @change="patient.clearGenderOther()"
       />
       <v-checkbox
         v-model="patient.gender"
@@ -98,6 +100,7 @@ const submitForm = () => {
         value="Other"
         density="compact"
         required
+        @change="patient.clearGenderOther()"
         :rules="[() => !!patient.gender || 'Please select your gender']"
       />
     </div>

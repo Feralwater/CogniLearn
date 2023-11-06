@@ -57,7 +57,7 @@
         </v-btn>
       </div>
     </div>
-    <div v-if="currentStep === 1">
+    <div>
       <h1 class="heading">Amazing! Now please fill in your details</h1>
       <p class="quiz-description">
         Note: we do not store any of your personal information, this is just for your doctor. If you will not print the
@@ -66,7 +66,7 @@
       <patient-data-form :on-submit="onSubmitData" />
     </div>
 
-    <div v-if="currentStep === 2">
+    <div>
       <h1 class="heading">Your results</h1>
       <p class="quiz-description">
         {{ testResult }}
