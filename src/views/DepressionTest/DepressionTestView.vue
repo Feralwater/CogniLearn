@@ -57,13 +57,30 @@
         </v-btn>
       </div>
     </div>
-    <div>
+    <div v-if="currentStep === 1">
       <h1 class="heading">Amazing! Now please fill in your details</h1>
       <p class="quiz-description">
         Note: we do not store any of your personal information, this is just for your doctor. If you will not print the
         results, the data will not be stored anywhere.
       </p>
       <patient-data-form :on-submit="onSubmitData" />
+    </div>
+
+    <div v-if="currentStep === 2">
+      <h1 class="heading">Your results</h1>
+      <p class="quiz-description">
+        {{ testResult }}
+      </p>
+      <p> {{ patient.firstName }}</p>
+      <p> {{ patient.lastName }}</p>
+      <p> {{ patient.gender }}</p>
+      <p> {{ patient.age }}</p>
+      <p> {{ patient.hasFamilyDepression }}</p>
+      <p> {{ patient.hoursOfSleep }}</p>
+      <p> {{ patient.hasMedicalTreatment }}</p>
+      <p> {{ patient.address }}</p>
+      <p> {{ patient.firstName }}</p>
+      <p> {{ patient.badHabits }}</p>
     </div>
   </v-container>
 </template>
@@ -74,7 +91,9 @@ import { depressionTestQuestions } from "@/data/depressionQuestions";
 import { getTestResult } from "@/utils/testResultProcessor";
 import AppStepper from "@/components/AppStepper/AppStepper.vue";
 import PatientDataForm from "@/components/PatientDataForm/PatientDataForm.vue";
+import { usePatientStore } from "@/stores/patient";
 
+const patient = usePatientStore();
 const steps = [
   { title: "Take a Test" },
   { title: "Fill Details" },
@@ -107,6 +126,7 @@ const prevQuestion = () => {
 
 const submitTest = () => {
   testResult.value = getTestResult(answers.value);
+  currentStep.value = 1;
 };
 </script>
 
