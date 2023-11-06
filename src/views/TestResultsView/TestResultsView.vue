@@ -31,7 +31,6 @@ const downloadPDF = () => {
   const element = document.getElementById("element-to-pdf");
 
   const options = {
-    margin: 10,
     filename: `${patient.firstName} ${patient.lastName} - test results.pdf`,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: { scale: 2 },
@@ -43,9 +42,22 @@ const downloadPDF = () => {
 </script>
 
 <template>
-  <v-btn @click="downloadPDF" color="primary">Download PDF</v-btn>
-  <div id="element-to-pdf">
-    <v-container>
+  <v-container class="registration-container">
+    <div class="registration-pdf">
+      <div class="registration-note">
+        Remember, that this test is not a diagnosis. It is just a tool to help you and your doctor to understand your
+        mental health condition.
+      </div>
+      <v-btn
+        @click="downloadPDF"
+        color="primary"
+        variant="text"
+      >
+        <v-icon>mdi-download</v-icon>
+        Download PDF
+      </v-btn>
+    </div>
+    <div id="element-to-pdf">
       <header class="header">
         <div class="header-logo">
           <v-img :src="logo" height="64" width="80" />
@@ -164,8 +176,8 @@ const downloadPDF = () => {
           </v-col>
         </v-row>
       </section>
-    </v-container>
-  </div>
+    </div>
+  </v-container>
 </template>
 
 <style scoped>

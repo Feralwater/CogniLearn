@@ -1,3 +1,7 @@
+.registration-container {
+  margin-top: 136px;
+}
+
 .header {
   background-color: var(--secondary);
   width: 100%;
@@ -57,4 +61,17 @@
 .registration-data {
   font-size: 16px;
   font-style: italic;
+}
+
+.registration-pdf {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.registration-note {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--indigo);
 }
