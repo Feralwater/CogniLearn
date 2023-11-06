@@ -34,7 +34,6 @@ const validateForm = () => {
 const submitForm = () => {
   if (validateForm()) {
     props.onSubmit();
-    patient.onReset();
   }
 };
 
