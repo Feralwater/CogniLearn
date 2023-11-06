@@ -10,11 +10,11 @@ const initialPatient = {
   email: "",
   address: "",
   badHabits: [],
-  hasFamilyDepression: false,
+  hasFamilyDepression: "",
   hoursOfSleep: null,
-  hasMedicalTreatment: false,
-  medicalTreatmentDetails: "",
-}
+  hasMedicalTreatment: "",
+  medicalTreatmentDetails: ""
+};
 
 export const usePatientStore = defineStore("patient", {
   state: () => initialPatient,
@@ -25,6 +25,10 @@ export const usePatientStore = defineStore("patient", {
 
     clearGenderOther() {
       this.genderOther = "";
+    },
+
+    clearMedicalTreatmentDetails() {
+      this.medicalTreatmentDetails = "";
     }
-  },
+  }
 });

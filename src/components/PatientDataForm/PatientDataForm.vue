@@ -221,20 +221,22 @@ const submitForm = () => {
       <v-checkbox
         v-model="patient.hasMedicalTreatment"
         label="Yes"
-        :value=true
+        value="Yes"
         density="compact"
         color="primary"
+        @change="patient.clearMedicalTreatmentDetails()"
       />
       <v-checkbox
         v-model="patient.hasMedicalTreatment"
         label="No"
-        :value=false
+        value="No"
         density="compact"
         color="primary"
+        @change="patient.clearMedicalTreatmentDetails()"
       />
     </div>
     <v-textarea
-      v-if="patient.hasMedicalTreatment"
+      v-if="patient.hasMedicalTreatment === 'Yes'"
       v-model="patient.medicalTreatmentDetails"
       label="Please describe your medical treatment"
       color="primary"
