@@ -24,7 +24,7 @@ const validateForm = () => {
     !!patient.badHabits.length &&
     !!patient.hasFamilyDepression &&
     !!patient.hasMedicalTreatment &&
-    (!patient.hasMedicalTreatment || !!patient.medicalTreatmentDetails)
+    (patient.hasMedicalTreatment !== "Yes" || !!patient.medicalTreatmentDetails)
   );
 
   formIsValid.value = isFormValid;
