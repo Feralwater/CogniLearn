@@ -149,6 +149,7 @@ const submitForm = () => {
       class="mb-1"
       density="compact"
       :rules="[() => !!patient.address || 'Please enter your address']"
+      counter="50"
     />
     <div class="checkbox-question">
       <v-label>Do you have any bad habits?</v-label>
