@@ -114,7 +114,7 @@ const submitForm = () => {
       class="mb-1"
       density="compact"
       counter="20"
-      :rules="[() => !!patient.genderOther || 'Please enter your gender']"
+      :rules="[() => !!patient.genderOther || 'Please enter your gender', v => v.length < 20 || '20 symbols max']"
     />
     <v-text-field
       v-model="patient.phone"
@@ -125,7 +125,7 @@ const submitForm = () => {
       type="tel"
       class="mb-1"
       density="compact"
-      :rules="[() => !!patient.phone || 'Please enter your phone number']"
+      :rules="[() => !!patient.phone || 'Please enter your phone number', v => v.length < 20 || '20 symbols max' ]"
       counter="20"
     />
     <v-text-field
@@ -137,7 +137,7 @@ const submitForm = () => {
       type="email"
       class="mb-1"
       density="compact"
-      :rules="[v => !!v || 'Please enter your email', v => /.+@.+\..+/.test(v) || 'Please enter a valid email address']"
+      :rules="[v => !!v || 'Please enter your email', v => /.+@.+\..+/.test(v) || 'Please enter a valid email address', v => v.length < 30 || '30 symbols max']"
       counter="30"
     />
     <v-text-field
@@ -160,7 +160,6 @@ const submitForm = () => {
         value="Alcohol"
         density="compact"
         @change="patient.removeNoneBadHabits()"
-        :rules="[() => !!patient.badHabits.length || 'Please select your bad habits']"
       />
       <v-checkbox
         v-model="patient.badHabits"
@@ -185,6 +184,7 @@ const submitForm = () => {
         value="None"
         density="compact"
         @change="patient.setNoneBadHabits('None')"
+        :rules="[() => !!patient.badHabits.length || 'Please select your bad habits']"
       />
     </div>
     <div class="checkbox-question">
@@ -195,7 +195,6 @@ const submitForm = () => {
         color="primary"
         value="Yes"
         density="compact"
-        :rules="[() => !!patient.hasFamilyDepression || 'Please select your family mental health issues']"
       />
       <v-checkbox
         v-model="patient.hasFamilyDepression"
@@ -203,6 +202,7 @@ const submitForm = () => {
         color="primary"
         value="No"
         density="compact"
+        :rules="[() => !!patient.hasFamilyDepression || 'Please select your family mental health issues']"
       />
     </div>
     <v-text-field
@@ -233,6 +233,7 @@ const submitForm = () => {
         density="compact"
         color="primary"
         @change="patient.clearMedicalTreatmentDetails()"
+        :rules="[() => !!patient.hasMedicalTreatment || 'Please select your medical treatment']"
       />
     </div>
     <v-textarea
@@ -243,7 +244,7 @@ const submitForm = () => {
       variant="outlined"
       class="mb-1"
       density="compact"
-      :rules="[() => !!patient.medicalTreatmentDetails || 'Please enter your medical treatment details']"
+      :rules="[() => !!patient.medicalTreatmentDetails || 'Please enter your medical treatment details', v => v.length < 100 || '100 symbols max']"
       counter="100"
     />
     <div class="actions">
