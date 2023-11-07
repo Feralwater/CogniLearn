@@ -46,6 +46,9 @@ const submitForm = () => {
 
 <template>
   <v-form @submit.prevent="submitForm" class="patient-form" @reset="patient.onReset">
+    <div class="actions reset">
+      <v-btn color="quaternary" type="reset">Reset form</v-btn>
+    </div>
     <v-text-field
       density="compact"
       v-model.trim="patient.firstName"
@@ -211,7 +214,7 @@ const submitForm = () => {
     </div>
     <v-text-field
       v-model.number="patient.hoursOfSleep"
-      label="How many hours of sleep do you get per night?"
+      label="Hours of sleep per day"
       required
       type="number"
       color="primary"
@@ -251,8 +254,7 @@ const submitForm = () => {
       :rules="[() => !!patient.medicalTreatmentDetails || 'Please enter your medical treatment details', v => v.length < 100 || '100 symbols max']"
       counter="100"
     />
-    <div class="actions">
-      <v-btn color="secondary" type="reset">Reset form</v-btn>
+    <div class="actions submit">
       <v-btn type="submit" color="primary">Submit information</v-btn>
     </div>
   </v-form>
@@ -274,6 +276,17 @@ const submitForm = () => {
 .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 20px;
+}
+
+.actions.submit {
+  margin-top: 20px;
+}
+
+.actions.reset {
+  margin-bottom: 20px;
+}
+
+:global(.v-label) {
+  white-space: break-spaces;
 }
 </style>
