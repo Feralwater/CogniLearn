@@ -36,6 +36,7 @@
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.4.0",
+    "colada-plugin": "^0.1.0",
     "cypress": "^12.14.0",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",

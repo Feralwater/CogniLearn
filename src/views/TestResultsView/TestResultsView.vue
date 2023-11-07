@@ -130,14 +130,14 @@ const downloadPDF = () => {
           <v-col cols="6" class="registration-col">
             <v-icon color="primary" size="18">mdi-medical-bag</v-icon>
             <span class="registration-field">Medical treatment: </span>
-            <span class="registration-data">{{ patient.hasMedicalTreatment ? "Yes" : "No" }}</span>
+            <span class="registration-data">{{ patient.hasMedicalTreatment }}</span>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="6" class="registration-col">
             <v-icon color="primary" size="18">mdi-heart-pulse</v-icon>
             <span class="registration-field">Family mental issues</span>
-            <span class="registration-data">{{ patient.hasFamilyDepression ? "Yes" : "No" }}</span>
+            <span class="registration-data">{{ patient.hasFamilyDepression }}</span>
           </v-col>
           <v-col cols="6" class="registration-col">
             <v-icon color="primary" size="18">mdi-pill</v-icon>
