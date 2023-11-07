@@ -75,3 +75,31 @@
   font-style: italic;
   color: var(--indigo);
 }
+
+@media (max-width: 550px) {
+
+  .project-name {
+    font-size: 20px;
+  }
+
+  .header-text {
+    display: none;
+  }
+
+  .registration-col {
+    flex-direction: column;
+    padding: 4px 8px;
+    gap: 4px;
+    align-items: start;
+  }
+
+  .registration-field,
+  .registration-data {
+    font-size: 14px;
+  }
+
+  .registration-pdf {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
