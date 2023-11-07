@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePatientStore } from "@/stores/patient";
-import { ref } from "vue";
+import { ref, onBeforeMount } from "vue";
 
 const patient = usePatientStore();
 const props = defineProps({
@@ -9,6 +9,11 @@ const props = defineProps({
     required: true
   }
 });
+
+onBeforeMount(() => {
+  patient.onReset();
+});
+
 const formIsValid = ref(false);
 const validateForm = () => {
   const isFormValid = (
