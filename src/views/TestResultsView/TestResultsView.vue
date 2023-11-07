@@ -164,16 +164,26 @@ const downloadPDF = () => {
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="6" class="registration-col">
+          <v-col cols="12" class="registration-col">
             <v-icon color="primary" size="18">mdi-emoticon-sad-outline</v-icon>
             <span class="registration-field">Test result: </span>
             <span class="registration-data">{{ props.testResult }}</span>
           </v-col>
-          <v-col cols="6" class="registration-col">
+          <v-col cols="12" class="registration-col">
             <v-icon color="primary" size="18">mdi-information-outline</v-icon>
             <span class="registration-field">Test result description: </span>
             <span class="registration-data">{{ depressionResults }}</span>
           </v-col>
+        </v-row>
+        <v-row class="registration-comment">
+          <v-col cols="12" class="registration-col">
+            <v-icon color="primary" size="18">mdi-comment-text-outline</v-icon>
+            <span class="registration-field">Doctor`s comment: </span>
+          </v-col>
+          <v-col cols="12" class="registration-col"/>
+          <v-col cols="12" class="registration-col"/>
+          <v-col cols="12" class="registration-col"/>
+          <v-col cols="12" class="registration-col"/>
         </v-row>
       </section>
     </div>

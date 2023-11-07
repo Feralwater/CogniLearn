@@ -41,6 +41,10 @@
   font-size: 18px;
 }
 
+.registration-comment {
+  min-height: 200px;
+}
+
 .registration-col {
   display: flex;
   align-items: center;
