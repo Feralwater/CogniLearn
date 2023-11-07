@@ -145,6 +145,13 @@ const downloadPDF = () => {
             <span class="registration-data">{{ patient.medicalTreatmentDetails }}</span>
           </v-col>
         </v-row>
+        <v-row>
+          <v-col cols="6" class="registration-col">
+            <v-icon color="primary" size="18">mdi-sleep</v-icon>
+            <span class="registration-field">Hours of sleep: </span>
+            <span class="registration-data">{{ patient.hoursOfSleep }} hours per day</span>
+          </v-col>
+        </v-row>
 
         <v-row>
           <v-col cols="12" class="registration-heading">
