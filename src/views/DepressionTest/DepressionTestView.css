@@ -1,81 +1,97 @@
+.test {
+  margin-top: 136px;
+}
+
 .quiz-container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
-.quiz-header {
-  margin: 15px 0;
+.heading {
+  text-align: center;
+  font-size: 28px;
   font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--secondary);
 }
 
-.question-title {
+.quiz-description {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: var(--gray);
+}
+
+.quiz-card {
+  background-color: var(--primary-soft);
+}
+
+.question-number {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary);
+  text-align: center;
+}
+
+.question {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--white);
+  background-color: var(--primary);
+  padding: 10px;
+  border-radius: 4px;
   white-space: break-spaces;
 }
 
 .radio-buttons {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 }
 
 .radio-card {
-  border: 1px solid var(--black);
   border-radius: 4px;
   padding: 10px;
-  margin: 5px 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: var(--white);
+  color: var(--black);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .radio-card:hover {
-  background-color: var(--primary-soft);
+  background-color: var(--primary);
 }
 
 .radio-card-selected {
   background-color: var(--primary);
-  color: white;
-  border-color: var(--primary);
-}
-
-.radio-card-selected:hover {
-  background-color: var(--primary-mute);
+  color: var(--white);
 }
 
 .radio-card input[type="radio"] {
   display: none;
 }
 
-button.next-button,
-button.prev-button {
-  background-color: transparent;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--primary);
-}
-
-button.next-button:disabled,
-button.prev-button:disabled {
-  color: var(--black);
-  cursor: not-allowed;
-}
-
-button.next-button:disabled:hover,
-button.prev-button:disabled:hover {
-  color: var(--black);
-  cursor: not-allowed;
-}
-
-button.next-button:hover,
-button.prev-button:hover {
-  color: var(--primary-mute);
-}
-
-button.next-button {
-  margin-left: 10px;
+.quiz-actions {
+  display: flex;
+  width: 100%;
+  justify-content: end;
 }
 
 .submit-button {
   margin-top: 20px;
-  cursor: pointer;
+}
+
+@media screen and (max-width: 599px) {
+  .test {
+    margin-top: 56px;
+  }
+
+  .heading {
+    font-size: 18px;
+  }
+
+  .question {
+    font-size: 14px;
+  }
 }

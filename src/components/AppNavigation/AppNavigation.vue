@@ -17,7 +17,7 @@ const props = defineProps<{
 <template>
   <nav class="navigation d-none d-sm-flex">
     <v-list class="navigation-list header-container">
-      <v-list-item class="navigation-item" v-for="link in props.links" :key="link.route">
+      <v-list-item v-for="link in props.links" :key="link.route">
         <router-link :to="link.route" class="navigation-link">{{ link.text }}</router-link>
       </v-list-item>
       <v-list-item class="navigation-item">
@@ -47,10 +47,6 @@ const props = defineProps<{
   align-items: center;
   justify-content: space-between;
   background-color: var(--primary);
-}
-
-.navigation-item {
-  text-transform: uppercase;
 }
 
 .navigation-link {

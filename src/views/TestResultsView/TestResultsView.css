@@ -1,20 +1,105 @@
-.result-title {
-  font-size: 36px;
-  font-weight: bold;
-  color:var(--important);
+.header {
+  background-color: var(--secondary);
+  width: 100%;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--white);
+  box-sizing: border-box;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.project-name {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.project-name.green {
+  color: var(--tertiary);
+}
+
+.header-text {
+  color: var(--tertiary);
+  font-style: italic;
+}
+
+.registration {
+  background-color: var(--background);
+  padding: 12px;
+}
+
+.registration-heading {
+  background-color: var(--border);
   text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.registration-comment {
+  min-height: 200px;
+}
+
+.registration-col {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.registration-field {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--indigo);
+}
+
+.registration-data {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.registration-pdf {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.result-description {
-  font-size: 24px;
-  color: var(--secondary);
-  text-align: center;
-  margin: 20px 60px;
+.registration-note {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--indigo);
 }
 
-.downloadBtn {
-  cursor: pointer;
-  display: block;
-  margin: 20px auto;
+@media (max-width: 550px) {
+
+  .project-name {
+    font-size: 20px;
+  }
+
+  .header-text {
+    display: none;
+  }
+
+  .registration-col {
+    flex-direction: column;
+    padding: 4px 8px;
+    gap: 4px;
+    align-items: start;
+  }
+
+  .registration-field,
+  .registration-data {
+    font-size: 14px;
+  }
+
+  .registration-pdf {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
