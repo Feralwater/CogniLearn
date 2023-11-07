@@ -16,26 +16,26 @@ onBeforeMount(() => {
 
 const formIsValid = ref(false);
 const validateForm = () => {
-  const isFormValid = (
-    !!patient.firstName &&
-    !!patient.lastName &&
-    !!patient.age &&
+  const isFormValid =
+    !!patient.firstName && patient.firstName.length <= 20 &&
+    !!patient.lastName && patient.lastName.length <= 20 &&
+    !!patient.age && patient.age >= 0 && patient.age < 120 &&
     !!patient.gender &&
-    (patient.gender !== "Other" || !!patient.genderOther) &&
-    !!patient.phone &&
-    !!patient.email &&
-    !!patient.address &&
-    !!patient.hoursOfSleep &&
-    !!patient.badHabits.length &&
+    (patient.gender !== "Other" || (!!patient.genderOther && patient.genderOther.length <= 20)) &&
+    !!patient.phone && patient.phone.length <= 20 &&
+    !!patient.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(patient.email) && patient.email.length <= 30 &&
+    !!patient.address && patient.address.length <= 50 &&
+    !!patient.hoursOfSleep && patient.hoursOfSleep >= 0 && patient.hoursOfSleep < 24 &&
+    (patient.badHabits.includes("None") || patient.badHabits.length > 0) &&
     !!patient.hasFamilyDepression &&
     !!patient.hasMedicalTreatment &&
-    (patient.hasMedicalTreatment !== "Yes" || !!patient.medicalTreatmentDetails)
-  );
+    (patient.hasMedicalTreatment !== "Yes" || (!!patient.medicalTreatmentDetails && patient.medicalTreatmentDetails.length <= 100));
 
   formIsValid.value = isFormValid;
 
   return isFormValid;
 };
+
 const submitForm = () => {
   if (validateForm()) {
     props.onSubmit();
