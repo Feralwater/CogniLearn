@@ -81,19 +81,19 @@ export default {
 </script>
 
 <template>
-  <div>
+  <v-container class="container">
     <modal-window v-model:show="dialogVisible">
       <review-form @addReview="addReview" />
     </modal-window>
-    <div class="headerContainer">
-      <h1 class="header">Our Reviews</h1>
-      <div class="buttonsContainer">
-        <v-text-field
-          v-model.trim="search"
-          label="Looking for something?"
-          class="search-input"
-          color="primary"
-        />
+    <h1 class="header">Our Reviews</h1>
+    <div class="buttonsContainer">
+      <v-text-field
+        v-model.trim="search"
+        label="Looking for something?"
+        class="search-input"
+        color="primary"
+      />
+      <div class="right">
         <v-btn @click="dialogVisible = true" color="primary">Add Review</v-btn>
         <custom-select
           v-model="selectedSort"
@@ -101,7 +101,6 @@ export default {
         />
       </div>
     </div>
-    <v-divider></v-divider>
     <review-list :reviews="filteredReviews" @removeReview="removeReview" v-if="!isReviewsLoading" />
     <div v-else class="progress">
       <v-progress-circular
@@ -110,21 +109,20 @@ export default {
         indeterminate
       />
     </div>
-  </div>
+  </v-container>
 </template>
 
 <style scoped>
-.header {
-  font-size: 32px;
-  font-weight: bold;
-  color: var(--black);
+.container {
+  margin-top: 136px;
 }
 
-.headerContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 15px;
+.header {
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: 50px;
+  letter-spacing: 4px;
+  color: var(--secondary);
+  margin: 0;
 }
 
 .progress {
@@ -136,17 +134,52 @@ export default {
 
 .buttonsContainer {
   display: flex;
-  justify-content: space-between;
+  margin: 0 15px;
   align-items: center;
+  justify-content: flex-end;
+  gap: 15px
 }
 
 .search-input {
-  width: 300px;
-  margin-right: 20px;
+  width: 100%;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .search-input:global(.v-field--variant-filled .v-field__overlay) {
   background-color: var(--primary-soft);
+}
+
+@media screen and (max-width: 599px) {
+  .container {
+    margin-top: 56px;
+  }
+
+  .header {
+    font-size: 26px;
+    padding: 0 16px;
+  }
+
+  .right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .buttonsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 </style>
