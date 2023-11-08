@@ -1,25 +1,36 @@
 <template>
-  <div class="contactCard">
-    <h3 class="contactCard--header">{{ clinic.name }}</h3>
-    <div>
-      <p class="contactCard--data">
-        <span class="contactCard--data-name">Country:</span>
-        <span>{{ clinic.country }}</span>
-      </p>
-      <p class="contactCard--data">
-        <span class="contactCard--data-name">City:</span>
-        <span>{{ clinic.city }}</span>
-      </p>
-      <p class="contactCard--data">
-        <span class="contactCard--data-name">Medical Director:</span>
-        <span>{{ clinic.medicalDirector }}</span>
-      </p>
-      <p class="contactCard--data">
-        <span class="contactCard--data-name">Phone:</span>
-        <span>{{ clinic.phone }}</span>
-      </p>
-    </div>
-  </div>
+  <v-card class="contactCard">
+    <v-card-title class="contactCard--header">
+      {{ clinic.name }}
+    </v-card-title>
+    <v-card-text class="contactCard--data">
+      <v-row>
+        <v-col class="contactCard--data-name pa-1">
+          <v-icon color="primary">mdi-map-marker</v-icon>
+          Country:
+        </v-col>
+        <v-col class="pa-1">{{ clinic.country }}</v-col>
+      </v-row>
+      <v-row>
+        <v-col class="contactCard--data-name pa-1">
+          <v-icon color="primary">mdi-city</v-icon>
+          City:
+        </v-col>
+        <v-col class="pa-1">{{ clinic.city }}</v-col>
+      </v-row>
+      <v-row>
+        <v-col class="contactCard--data-name pa-1">
+          <v-icon color="primary">mdi-account</v-icon>
+          Director:
+        </v-col>
+        <v-col class="pa-1">{{ clinic.medicalDirector }}</v-col>
+      </v-row>
+    </v-card-text>
+    <v-card-actions>
+      <v-icon color="primary">mdi-phone</v-icon>
+      <a :href="`tel:${clinic.phone}`" class="contactCard--phone">{{ clinic.phone }}</a>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts">

@@ -3,15 +3,16 @@
   border-radius: 6px;
 }
 
+.container {
+  margin-top: 136px;
+}
+
 .contacts--heading {
-  margin: 15px 0 0 0;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--indigo);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 1px var(--indigo);
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: 50px;
+  letter-spacing: 4px;
+  color: var(--secondary);
+  padding: 0 24px;
 }
 
 .contacts {
@@ -23,7 +24,21 @@
 
 .contacts--cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-gap: 20px;
   justify-items: center;
+
+  @media screen and (max-width: 464px) {
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .container {
+    margin-top: 56px;
+  }
+
+  .contacts--heading {
+    font-size: 26px;
+  }
 }

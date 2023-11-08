@@ -1,2 +1,23 @@
 @import 'base.css';
 @import 'normalize.css';
+
+.container {
+  margin-top: 136px;
+
+  @media screen and (max-width: 599px) {
+    margin-top: 56px;
+  }
+}
+
+.mainHeading {
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: 50px;
+  letter-spacing: 4px;
+  color: var(--secondary);
+  padding: 0 24px;
+  margin: 0;
+
+  @media screen and (max-width: 599px) {
+    font-size: 26px;
+  }
+}

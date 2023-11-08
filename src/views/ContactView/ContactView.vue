@@ -1,13 +1,15 @@
 <template>
-  <h1 class="contacts--heading">Our Clinics</h1>
-  <div class="contacts">
-    <div class="contacts--cards">
-      <div v-for="clinic in clinics" :key="clinic.id">
-        <ContactCard :clinic="clinic" />
+  <v-container class="container">
+    <h1 class="contacts--heading">Our Clinics</h1>
+    <div class="contacts">
+      <div class="contacts--cards">
+        <div v-for="clinic in clinics" :key="clinic.id">
+          <ContactCard :clinic="clinic" />
+        </div>
       </div>
+      <div id="map" style="height: 400px;" />
     </div>
-    <div id="map" style="height: 400px;" />
-  </div>
+  </v-container>
 </template>
 
 <script>
