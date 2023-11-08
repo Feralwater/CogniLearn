@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <h1 class="heading">Login to your personal account</h1>
+  <v-container class="container">
+    <h1 class="mainHeading">Login</h1>
     <div class="login--preview">
-      <div>
-        <v-img :src="doctorIcon" width="350" />
-      </div>
+      <v-img :src="doctorIcon" max-width="350" min-width="300"/>
       <div class="login--form">
-        <p>
-          Log in to access exclusive content. You'll be able to personalize your learning
-          journey, track your progress, and bookmark your favorite articles and resources.
+        <p class="login--text">
+          Log in to your account to see your appointments and manage your
+          profile.
         </p>
         <v-form>
           <v-text-field
@@ -32,7 +30,7 @@
         </v-form>
       </div>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -66,7 +64,7 @@ export default {
       if (!this.loginStore.user) {
         return false;
       }
-      if(this.loginStore.user.length > 20) {
+      if (this.loginStore.user.length > 20) {
         return false;
       }
       return this.loginStore.user.length > 0;
