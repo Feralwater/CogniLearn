@@ -18,6 +18,9 @@ export default {
       dialogVisible: false,
       isReviewsLoading: false,
       selectedSort: "",
+      page: 1,
+      itemsPerPage: 5,
+      totalPages: 0,
       sortOptions: [
         { value: "nameAsk", title: "Sort by name (A-Z)" },
         { value: "nameDesc", title: "Sort by name (Z-A)" },
@@ -39,7 +42,13 @@ export default {
     async fetchReviews() {
       try {
         this.isReviewsLoading = true;
-        const { data } = await axios.get("https://jsonplaceholder.typicode.com/comments?_limit=5");
+        const { data, headers } = await axios.get("https://jsonplaceholder.typicode.com/comments", {
+          params: {
+            _page: this.page,
+            _limit: this.itemsPerPage
+          }
+        });
+        this.totalPages = Math.ceil(headers["x-total-count"] / this.itemsPerPage);
         this.reviews = data.map((review: ServerReview) => ({
           id: review.id,
           name: review.name,
