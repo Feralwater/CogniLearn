@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { Review } from "@/types/review";
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
+import { Routes } from "@/router/routes";
 
 export default {
   components: { RatingStars },
@@ -9,12 +10,22 @@ export default {
       type: Object as () => Review,
       required: true
     }
+  },
+
+  methods: {
+    removeReview(id: number) {
+      this.$emit("remove-review", id);
+    },
+
+    openReview() {
+      this.$router.push(Routes.ReviewsId.replace(":id", this.review.id.toString()));
+    }
   }
 };
 </script>
 
 <template>
-  <v-card class="card">
+  <v-card class="card" @click="openReview">
     <v-card-title class="card-title">{{ review.name }}</v-card-title>
     <v-card-text>
       <rating-stars :rating="review.rating" />
@@ -23,7 +34,7 @@ export default {
     <div class="button-container">
       <v-btn
         color="primary"
-        @click="$emit('remove-review', review.id)"
+        @click="removeReview(review.id)"
       >
         <v-icon>mdi-delete</v-icon>
         Remove
