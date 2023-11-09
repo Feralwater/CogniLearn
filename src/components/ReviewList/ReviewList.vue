@@ -39,7 +39,7 @@ export default {
   text-align: center;
   margin: 20px 0;
   font-size: 30px;
-  color: var(--vt-c-text-light-1);
+  color: var(--indigo);
 }
 
 .reviews-list-enter-active,
