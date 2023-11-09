@@ -124,12 +124,14 @@ export default {
         indeterminate
       />
     </div>
-    <v-pagination
-      v-model="page"
-      :length="totalPages"
-      :total-visible="5"
-      color="primary"
-    />
+    <div class="pagination">
+      <v-pagination
+        v-model="page"
+        :length="totalPages"
+        :total-visible="5"
+        color="primary"
+      />
+    </div>
   </v-container>
 </template>
 
@@ -151,6 +153,13 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .buttonsContainer {
@@ -188,6 +197,15 @@ export default {
   .right {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .pagination {
+    margin-top: 15px;
+
+    :global(.v-btn--size-default) {
+      height: 30px;
+      width: 30px;
+    }
   }
 }
 
