@@ -85,6 +85,12 @@ export default {
     filteredReviews() {
       return this.sortedReviews.filter(review => review.name.toLowerCase().includes(this.search.toLowerCase()));
     }
+  },
+
+  watch: {
+    page() {
+      this.fetchReviews();
+    }
   }
 };
 </script>
@@ -118,6 +124,12 @@ export default {
         indeterminate
       />
     </div>
+    <v-pagination
+      v-model="page"
+      :length="totalPages"
+      :total-visible="5"
+      color="primary"
+    />
   </v-container>
 </template>
 
