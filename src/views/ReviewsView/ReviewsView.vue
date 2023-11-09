@@ -18,6 +18,9 @@ export default {
       dialogVisible: false,
       isReviewsLoading: false,
       selectedSort: "",
+      page: 1,
+      itemsPerPage: 5,
+      totalPages: 0,
       sortOptions: [
         { value: "nameAsk", title: "Sort by name (A-Z)" },
         { value: "nameDesc", title: "Sort by name (Z-A)" },
@@ -39,7 +42,13 @@ export default {
     async fetchReviews() {
       try {
         this.isReviewsLoading = true;
-        const { data } = await axios.get("https://jsonplaceholder.typicode.com/comments?_limit=5");
+        const { data, headers } = await axios.get("https://jsonplaceholder.typicode.com/comments", {
+          params: {
+            _page: this.page,
+            _limit: this.itemsPerPage
+          }
+        });
+        this.totalPages = Math.ceil(headers["x-total-count"] / this.itemsPerPage);
         this.reviews = data.map((review: ServerReview) => ({
           id: review.id,
           name: review.name,
@@ -76,6 +85,12 @@ export default {
     filteredReviews() {
       return this.sortedReviews.filter(review => review.name.toLowerCase().includes(this.search.toLowerCase()));
     }
+  },
+
+  watch: {
+    page() {
+      this.fetchReviews();
+    }
   }
 };
 </script>
@@ -109,6 +124,14 @@ export default {
         indeterminate
       />
     </div>
+    <div class="pagination">
+      <v-pagination
+        v-model="page"
+        :length="totalPages"
+        :total-visible="5"
+        color="primary"
+      />
+    </div>
   </v-container>
 </template>
 
@@ -130,6 +153,13 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .buttonsContainer {
@@ -167,6 +197,15 @@ export default {
   .right {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .pagination {
+    margin-top: 15px;
+
+    :global(.v-btn--size-default) {
+      height: 30px;
+      width: 30px;
+    }
   }
 }
 
