@@ -17,17 +17,17 @@ export default {
   <v-card class="card">
     <v-card-title class="card-title">{{ review.name }}</v-card-title>
     <v-card-text>
-      <p class="review-text">{{ review.review }}</p>
       <rating-stars :rating="review.rating" />
+      <p class="review-text">{{ review.review }}</p>
     </v-card-text>
     <div class="button-container">
       <v-btn
         color="primary"
         @click="$emit('remove-review', review.id)"
       >
+        <v-icon>mdi-delete</v-icon>
         Remove
       </v-btn>
-      <v-btn color="primary">Edit</v-btn>
     </div>
   </v-card>
 </template>
@@ -53,7 +53,7 @@ export default {
 .review-text {
   font-size: 16px;
   line-height: 1.4;
-  margin-bottom: 10px;
+  margin: 10px 0;
   color: var(--black);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,7 +64,6 @@ export default {
   margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: flex-end;
 }
-
 </style>
