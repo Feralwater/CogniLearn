@@ -49,6 +49,11 @@ const router = createRouter({
       path: Routes.Reviews,
       name: 'reviews',
       component: () => import('@/views/ReviewsView/ReviewsView.vue')
+    },
+    {
+      path: Routes.ReviewsId,
+      name: 'reviewsId',
+      component: () => import('@/views/ReviewView/ReviewView.vue')
     }
   ]
 })

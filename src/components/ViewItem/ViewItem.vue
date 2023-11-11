@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { Review } from "@/types/review";
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
+import { Routes } from "@/router/routes";
 
 export default {
   components: { RatingStars },
@@ -9,63 +10,71 @@ export default {
       type: Object as () => Review,
       required: true
     }
+  },
+
+  methods: {
+    removeReview(id: number) {
+      this.$emit("remove-review", id);
+    },
+
+    openReview() {
+      this.$router.push(Routes.ReviewsId.replace(":id", this.review.id.toString()));
+    }
   }
 };
 </script>
 
 <template>
-  <v-card class="card">
+  <v-card class="card" @click="openReview">
     <v-card-title class="card-title">{{ review.name }}</v-card-title>
-    <v-card-text class="card-text">
-      <p class="review-text">{{ review.review }}</p>
+    <v-card-text>
       <rating-stars :rating="review.rating" />
+      <p class="review-text">{{ review.review }}</p>
     </v-card-text>
     <div class="button-container">
-      <v-btn color="primary"
-             @click="$emit('remove-review', review.id)"
-      >Remove
+      <v-btn
+        color="primary"
+        @click.stop="removeReview(review.id)"
+      >
+        <v-icon>mdi-delete</v-icon>
+        Remove
       </v-btn>
-      <v-btn color="primary">Edit</v-btn>
     </div>
   </v-card>
 </template>
 
 <style scoped>
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--background);
+  box-shadow: 0 2px 4px var(--secondary-60);
+  cursor: pointer;
 }
 
 .card-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
-}
-
-.card-text {
-  font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 10px;
-  color: #666;
+  color: var(--indigo);
 }
 
 .review-text {
   font-size: 16px;
   line-height: 1.4;
-  margin-bottom: 10px;
-  color: #333;
+  margin: 10px 0;
+  color: var(--black);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .button-container {
   margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: flex-end;
 }
-
 </style>

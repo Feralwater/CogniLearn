@@ -8,4 +8,5 @@ export enum Routes {
   Login = "/login",
   Statistics = "/statistics",
   Reviews = "/reviews",
+  ReviewsId = "/reviews/:id",
 }
