@@ -39,7 +39,7 @@ onMounted(() => {
     </v-row>
     <v-row>
       <v-col class="d-flex justify-lg-space-between mb-3">
-        <rating-stars :rating="4" />
+        <rating-stars :rating="Math.floor(Math.random() * 5) + 1" />
         <p class="recommended-text">recommended by 84% of patients</p>
       </v-col>
     </v-row>
@@ -84,7 +84,7 @@ onMounted(() => {
         <p class="label">Patient Feedback</p>
       </v-col>
       <v-col>
-        <rating-stars :rating="5" />
+        <rating-stars :rating="Math.floor(Math.random() * 5) + 1" />
       </v-col>
     </v-row>
   </v-container>

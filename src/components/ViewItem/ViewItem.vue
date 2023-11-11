@@ -34,7 +34,7 @@ export default {
     <div class="button-container">
       <v-btn
         color="primary"
-        @click="removeReview(review.id)"
+        @click.stop="removeReview(review.id)"
       >
         <v-icon>mdi-delete</v-icon>
         Remove
