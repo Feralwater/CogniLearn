@@ -34,7 +34,7 @@ onMounted(() => {
   <v-container class="container review-container">
     <v-row>
       <v-col>
-        <h1 class="doctor-name">Dr. John Doe</h1>
+        <h1 class="doctor-name">Dr. Peter Parker</h1>
       </v-col>
     </v-row>
     <v-row>
