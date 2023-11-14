@@ -17,8 +17,10 @@ const reviewBody = ref(props.review?.review ?? "");
 const rating = ref(props.review?.rating ?? 0);
 const isEditing = computed(() => props.review !== null);
 const isFormValid = computed(() => !!name.value && !!reviewBody.value && !!rating.value);
+const isButtonClicked = ref(false);
 
 const addReview = () => {
+  isButtonClicked.value = true;
   if (!isFormValid.value) return;
   emit("add-review", {
     id: -Date.now(),
@@ -32,6 +34,7 @@ const addReview = () => {
 };
 
 const onSaveEditedReview = () => {
+  isButtonClicked.value = true;
   if (!isFormValid.value) return;
   emit("on-save-edited-review", {
     ...props.review,
@@ -69,7 +72,7 @@ const onRatingChange = (stars: number) => {
       <span class="rating-label">Rating:</span>
       <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
     </div>
-    <div v-if="!rating" class="error">
+    <div v-if="!rating && isButtonClicked" class="error">
       Please select rating
     </div>
     <v-btn
