@@ -41,6 +41,7 @@ const { review } = useReview(id);
       <v-col>
         <p class="label">Patient</p>
         <p v-if="review">{{ review.email }}</p>
+        <v-skeleton-loader v-else type="text" />
       </v-col>
       <v-col>
         <p class="label">Appointment Date</p>
@@ -51,11 +52,13 @@ const { review } = useReview(id);
     <v-row class="review-section">
       <v-col>
         <p class="reviewer-name" v-if="review">{{ review.name }}</p>
+        <v-skeleton-loader v-else type="text" />
       </v-col>
     </v-row>
     <v-row>
       <v-col>
         <p v-if="review">{{ review.body }}</p>
+        <v-skeleton-loader v-else type="text" />
       </v-col>
     </v-row>
     <v-divider class="section-divider" />
