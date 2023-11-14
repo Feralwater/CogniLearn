@@ -1,40 +1,89 @@
-<script lang="ts">
+<script lang="ts" setup>
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
+import type { Review } from "@/types/review";
+import { computed, ref } from "vue";
 
-export default {
-  components: { RatingStars },
-  data() {
-    return {
-      name: "",
-      review: "",
-      rating: 0,
-    };
-  },
-  methods: {
-    addReview() {
-      this.$emit("add-review", {
-        id: Date.now(),
-        name: this.name,
-        review: this.review,
-        rating: this.rating
-      });
-      this.name = "";
-      this.review = "";
-      this.rating = 0;
-    },
-    onRatingChange(rating: number) {
-      this.rating = rating;
-    }
+const props = defineProps({
+  review: {
+    type: Object as () => Review | null,
+    required: false
   }
+});
+
+const emit = defineEmits(["add-review", "on-save-edited-review"]);
+
+const name = ref(props.review?.name ?? "");
+const reviewBody = ref(props.review?.review ?? "");
+const rating = ref(props.review?.rating ?? 0);
+const isEditing = computed(() => props.review !== null);
+const isFormValid = computed(() => !!name.value && !!reviewBody.value && !!rating.value);
+const isButtonClicked = ref(false);
+
+const addReview = () => {
+  isButtonClicked.value = true;
+  if (!isFormValid.value) return;
+  emit("add-review", {
+    id: -Date.now(),
+    name: name.value,
+    review: reviewBody.value,
+    rating: rating.value
+  });
+  name.value = "";
+  reviewBody.value = "";
+  rating.value = 0;
 };
+
+const onSaveEditedReview = () => {
+  isButtonClicked.value = true;
+  if (!isFormValid.value) return;
+  emit("on-save-edited-review", {
+    ...props.review,
+    name: name.value,
+    review: reviewBody.value,
+    rating: rating.value
+  });
+};
+
+const onRatingChange = (stars: number) => {
+  rating.value = stars;
+};
+
 </script>
 
 <template>
   <v-form class="review-form" @submit.prevent>
-    <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
-    <textarea placeholder="Share your experience" class="input-field" v-model.trim="review"></textarea>
-    <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
-    <v-btn class="add-button" color="primary" @click="addReview" type="submit">Add Review</v-btn>
+    <v-text-field
+      label="Review title"
+      v-model.trim="name"
+      color="primary"
+      variant="outlined"
+      density="compact"
+      :rules="[v => !!v || 'Name is required']"
+    />
+    <v-textarea
+      label="Share your experience"
+      v-model.trim="reviewBody"
+      color="primary"
+      variant="outlined"
+      density="compact"
+      :rules="[v => !!v || 'Review is required']"
+    />
+    <div class="rating-container">
+      <span class="rating-label">Rating:</span>
+      <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
+    </div>
+    <div v-if="!rating && isButtonClicked" class="error">
+      Please select rating
+    </div>
+    <v-btn
+      class="add-button"
+      color="primary"
+      @click="isEditing ? onSaveEditedReview() : addReview()"
+      type="submit"
+    >
+      <v-icon>{{ isEditing ? "mdi-pencil" : "mdi-plus" }}</v-icon>
+      {{ isEditing ? "Update" : "Add" }}
+    </v-btn>
   </v-form>
 </template>
 
@@ -42,19 +91,8 @@ export default {
 .review-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: var(--white);
-  border: 1px solid var(--black);
+  padding: 15px;
   border-radius: 5px;
-}
-
-.input-field {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid var(--black);
-  border-radius: 3px;
 }
 
 .add-button {
@@ -62,4 +100,20 @@ export default {
   margin-top: 15px;
 }
 
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-label {
+  margin-right: 10px;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.error {
+  color: var(--important);
+  font-size: 10px;
+  margin-top: 5px;
+}
 </style>

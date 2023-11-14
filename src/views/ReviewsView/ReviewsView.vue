@@ -23,12 +23,27 @@ const selectedSort = ref("");
 const search = ref("");
 const dialogVisible = ref(false);
 const addReview = (review: Review) => {
-  reviews.value.push(review);
+  reviews.value = [review, ...reviews.value];
   dialogVisible.value = false;
 };
 
 const removeReview = (id: number) => {
   reviews.value = reviews.value.filter(review => review.id !== id);
+};
+
+const editingReview = ref<Review | null>(null);
+
+const editReview = (review: Review) => {
+  dialogVisible.value = true;
+
+  editingReview.value = review;
+};
+
+const onSaveEditedReview = (review: Review) => {
+  const index = reviews.value.findIndex(item => item.id === review.id);
+  reviews.value[index] = review;
+  editingReview.value = null;
+  dialogVisible.value = false;
 };
 
 const sortedReviews = computed(() => {
@@ -55,7 +70,7 @@ const filteredReviews = computed(() => {
 <template>
   <v-container class="container">
     <modal-window v-model:show="dialogVisible">
-      <review-form @addReview="addReview" />
+      <review-form @addReview="addReview" :review="editingReview" @onSaveEditedReview="onSaveEditedReview" />
     </modal-window>
     <h1 class="header">Our Reviews</h1>
     <div class="buttonsContainer">
@@ -73,7 +88,12 @@ const filteredReviews = computed(() => {
         />
       </div>
     </div>
-    <review-list :reviews="filteredReviews" @removeReview="removeReview" v-if="!isReviewsLoading" />
+    <review-list
+      :reviews="filteredReviews"
+      @removeReview="removeReview"
+      v-if="!isReviewsLoading"
+      @editReview="editReview"
+    />
     <div v-else class="progress">
       <v-progress-circular
         size="50"

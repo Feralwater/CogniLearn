@@ -17,6 +17,10 @@ export default {
       this.$emit("remove-review", id);
     },
 
+    editReview(review: Review) {
+      this.$emit("edit-review", review);
+    },
+
     openReview() {
       this.$router.push(Routes.ReviewsId.replace(":id", this.review.id.toString()));
     }
@@ -31,13 +35,17 @@ export default {
       <rating-stars :rating="review.rating" />
       <p class="review-text">{{ review.review }}</p>
     </v-card-text>
-    <div class="button-container">
+    <div class="button-container" v-if="review.id < 0">
       <v-btn
         color="primary"
         @click.stop="removeReview(review.id)"
       >
         <v-icon>mdi-delete</v-icon>
         Remove
+      </v-btn>
+      <v-btn color="primary" @click.stop="editReview(review)">
+        <v-icon>mdi-pencil</v-icon>
+        Edit
       </v-btn>
     </div>
   </v-card>
@@ -72,9 +80,9 @@ export default {
 }
 
 .button-container {
-  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 10px;
 }
 </style>
