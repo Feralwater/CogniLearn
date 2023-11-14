@@ -13,7 +13,7 @@ export default {
   methods: {
     addReview() {
       this.$emit("add-review", {
-        id: Date.now(),
+        id: -Date.now(),
         name: this.name,
         review: this.review,
         rating: this.rating

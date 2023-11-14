@@ -31,15 +31,15 @@ export default {
       <rating-stars :rating="review.rating" />
       <p class="review-text">{{ review.review }}</p>
     </v-card-text>
-<!--    <div class="button-container">-->
-<!--      <v-btn-->
-<!--        color="primary"-->
-<!--        @click.stop="removeReview(review.id)"-->
-<!--      >-->
-<!--        <v-icon>mdi-delete</v-icon>-->
-<!--        Remove-->
-<!--      </v-btn>-->
-<!--    </div>-->
+    <div class="button-container" v-if="review.id < 0">
+      <v-btn
+        color="primary"
+        @click.stop="removeReview(review.id)"
+      >
+        <v-icon>mdi-delete</v-icon>
+        Remove
+      </v-btn>
+    </div>
   </v-card>
 </template>
 
