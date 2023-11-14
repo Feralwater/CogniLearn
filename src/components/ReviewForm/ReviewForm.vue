@@ -16,8 +16,10 @@ const name = ref(props.review?.name ?? "");
 const reviewBody = ref(props.review?.review ?? "");
 const rating = ref(props.review?.rating ?? 0);
 const isEditing = computed(() => props.review !== null);
+const isFormValid = computed(() => !!name.value && !!reviewBody.value && !!rating.value);
 
 const addReview = () => {
+  if (!isFormValid.value) return;
   emit("add-review", {
     id: -Date.now(),
     name: name.value,
@@ -30,6 +32,7 @@ const addReview = () => {
 };
 
 const onSaveEditedReview = () => {
+  if (!isFormValid.value) return;
   emit("on-save-edited-review", {
     ...props.review,
     name: name.value,
@@ -46,9 +49,29 @@ const onRatingChange = (stars: number) => {
 
 <template>
   <v-form class="review-form" @submit.prevent>
-    <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
-    <textarea placeholder="Share your experience" class="input-field" v-model.trim="reviewBody"></textarea>
-    <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
+    <v-text-field
+      label="Review title"
+      v-model.trim="name"
+      color="primary"
+      variant="outlined"
+      density="compact"
+      :rules="[v => !!v || 'Name is required']"
+    />
+    <v-textarea
+      label="Share your experience"
+      v-model.trim="reviewBody"
+      color="primary"
+      variant="outlined"
+      density="compact"
+      :rules="[v => !!v || 'Review is required']"
+    />
+    <div class="rating-container">
+      <span class="rating-label">Rating:</span>
+      <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
+    </div>
+    <div v-if="!rating" class="error">
+      Please select rating
+    </div>
     <v-btn
       class="add-button"
       color="primary"
@@ -65,19 +88,8 @@ const onRatingChange = (stars: number) => {
 .review-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: var(--white);
-  border: 1px solid var(--black);
+  padding: 15px;
   border-radius: 5px;
-}
-
-.input-field {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid var(--black);
-  border-radius: 3px;
 }
 
 .add-button {
@@ -85,4 +97,20 @@ const onRatingChange = (stars: number) => {
   margin-top: 15px;
 }
 
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-label {
+  margin-right: 10px;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.error {
+  color: var(--important);
+  font-size: 10px;
+  margin-top: 5px;
+}
 </style>
