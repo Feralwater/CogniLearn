@@ -1,32 +1,12 @@
 <script setup lang="ts">
 import router from "../../router";
-import axios from "axios";
-import { onMounted, ref } from "vue";
-import type { ServerReview } from "@/types/review";
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
 import doctor from "@/assets/images/doctors/2.jpg";
+import { useReview } from "@/hooks/useReview";
 
-const id = router.currentRoute.value.params.id;
-const review = ref<ServerReview>({
-  id: 0,
-  name: "",
-  body: "",
-  postId: 0,
-  email: ""
-});
+const id = router.currentRoute.value.params.id as string;
 
-const fetchReview = async () => {
-  try {
-    const { data } = await axios.get(`https://jsonplaceholder.typicode.com/comments/${id}`);
-    review.value = data;
-  } catch (error) {
-    alert("Something went wrong. Please try again later.");
-  }
-};
-
-onMounted(() => {
-  fetchReview();
-});
+const { review } = useReview(id);
 
 </script>
 
@@ -60,7 +40,7 @@ onMounted(() => {
     <v-row class="patient-info">
       <v-col>
         <p class="label">Patient</p>
-        <p>{{ review.email }}</p>
+        <p v-if="review">{{ review.email }}</p>
       </v-col>
       <v-col>
         <p class="label">Appointment Date</p>
@@ -70,12 +50,12 @@ onMounted(() => {
     <v-divider class="section-divider" />
     <v-row class="review-section">
       <v-col>
-        <p class="reviewer-name">{{ review.name }}</p>
+        <p class="reviewer-name" v-if="review">{{ review.name }}</p>
       </v-col>
     </v-row>
     <v-row>
       <v-col>
-        <p>{{ review.body }}</p>
+        <p v-if="review">{{ review.body }}</p>
       </v-col>
     </v-row>
     <v-divider class="section-divider" />
@@ -92,7 +72,7 @@ onMounted(() => {
 
 <style scoped>
 
-.review-container{
+.review-container {
   max-width: 900px;
 }
 
