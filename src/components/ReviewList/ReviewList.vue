@@ -13,6 +13,10 @@ export default {
   methods: {
     removeReview(id: number) {
       this.$emit("remove-review", id);
+    },
+
+    editReview(review: Review) {
+      this.$emit("edit-review", review);
     }
   }
 };
@@ -26,6 +30,7 @@ export default {
         :key="review.id"
         :review="review"
         @removeReview="removeReview"
+        @editReview="editReview"
       />
     </transition-group>
   </div>

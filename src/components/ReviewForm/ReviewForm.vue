@@ -1,40 +1,63 @@
-<script lang="ts">
+<script lang="ts" setup>
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
+import type { Review } from "@/types/review";
+import { computed, ref } from "vue";
 
-export default {
-  components: { RatingStars },
-  data() {
-    return {
-      name: "",
-      review: "",
-      rating: 0,
-    };
-  },
-  methods: {
-    addReview() {
-      this.$emit("add-review", {
-        id: -Date.now(),
-        name: this.name,
-        review: this.review,
-        rating: this.rating
-      });
-      this.name = "";
-      this.review = "";
-      this.rating = 0;
-    },
-    onRatingChange(rating: number) {
-      this.rating = rating;
-    }
+const props = defineProps({
+  review: {
+    type: Object as () => Review | null,
+    required: false
   }
+});
+
+const emit = defineEmits(["add-review", "on-save-edited-review"]);
+
+const name = ref(props.review?.name ?? "");
+const reviewBody = ref(props.review?.review ?? "");
+const rating = ref(props.review?.rating ?? 0);
+const isEditing = computed(() => props.review !== null);
+
+const addReview = () => {
+  emit("add-review", {
+    id: -Date.now(),
+    name: name.value,
+    review: reviewBody.value,
+    rating: rating.value
+  });
+  name.value = "";
+  reviewBody.value = "";
+  rating.value = 0;
 };
+
+const onSaveEditedReview = () => {
+  emit("on-save-edited-review", {
+    ...props.review,
+    name: name.value,
+    review: reviewBody.value,
+    rating: rating.value
+  });
+};
+
+const onRatingChange = (stars: number) => {
+  rating.value = stars;
+};
+
 </script>
 
 <template>
   <v-form class="review-form" @submit.prevent>
     <input type="text" placeholder="Your name" class="input-field" v-model.trim="name" />
-    <textarea placeholder="Share your experience" class="input-field" v-model.trim="review"></textarea>
+    <textarea placeholder="Share your experience" class="input-field" v-model.trim="reviewBody"></textarea>
     <rating-stars :rating="rating" :on-rating-change="onRatingChange" />
-    <v-btn class="add-button" color="primary" @click="addReview" type="submit">Add Review</v-btn>
+    <v-btn
+      class="add-button"
+      color="primary"
+      @click="isEditing ? onSaveEditedReview() : addReview()"
+      type="submit"
+    >
+      <v-icon>{{ isEditing ? "mdi-pencil" : "mdi-plus" }}</v-icon>
+      {{ isEditing ? "Update" : "Add" }}
+    </v-btn>
   </v-form>
 </template>
 
