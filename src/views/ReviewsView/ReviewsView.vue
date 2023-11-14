@@ -23,7 +23,7 @@ const selectedSort = ref("");
 const search = ref("");
 const dialogVisible = ref(false);
 const addReview = (review: Review) => {
-  reviews.value.push(review);
+  reviews.value = [review, ...reviews.value];
   dialogVisible.value = false;
 };
 
