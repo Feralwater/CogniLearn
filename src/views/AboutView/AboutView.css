@@ -30,3 +30,23 @@
     font-size: 12px;
   }
 }
+
+.column {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  min-height: 200px;
+}
+
+.column-header {
+  font-size: 18px;
+  text-align: center;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px;
+  cursor: move;
+}

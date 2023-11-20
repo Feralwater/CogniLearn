@@ -9,6 +9,40 @@
           life's challenges and find the balance you seek. Trust our caring "mind masters" to guide you on your journey
           to better mental health.
         </p>
+        <v-row>
+          <h2>We provide the best care</h2>
+          <v-col>
+            <!-- First Column -->
+            <div class="column" @dragover.prevent @drop="dropHandler(1)">
+              <h3 class="column-header">Healthcare Triad Metrics</h3>
+              <div
+                class="card"
+                v-for="(member, index) in metrics"
+                :key="index"
+                draggable="true"
+                @dragstart="dragStartHandler(index, 1)"
+              >
+                {{ member.name }}
+              </div>
+            </div>
+          </v-col>
+
+          <v-col>
+            <!-- Second Column -->
+            <div class="column" @dragover.prevent @drop="dropHandler(2)">
+              <h3 class="column-header">Choose Metrics for yourself</h3>
+              <div
+                class="card"
+                v-for="(member, index) in chosenMetrics"
+                :key="index"
+                draggable="true"
+                @dragstart="dragStartHandler(index, 2)"
+              >
+                {{ member.name }}
+              </div>
+            </div>
+          </v-col>
+        </v-row>
       </v-col>
       <v-col>
         <v-card min-width="288px">
@@ -45,6 +79,42 @@
 
 <script setup lang="ts">
 import director from "@/assets/images/director/director.png";
+import { ref } from "vue";
+
+const metrics = ref([
+  { name: "Fast" },
+  { name: "Cheap" },
+  { name: "Good" }
+]);
+
+const chosenMetrics = ref([]);
+
+const dragStartHandler = (index: number, column: number) => {
+  event.dataTransfer.setData("text/plain", index + "-" + column);
+};
+
+const dropHandler = (toColumn: number) => {
+  // Get data from the transfer and split it into index and column
+  const data = event.dataTransfer.getData("text/plain").split("-");
+  const index = parseInt(data[0]);
+  const fromColumn = parseInt(data[1]);
+
+
+  if (fromColumn === 1 && toColumn === 2) {
+    if (chosenMetrics.value.length < 2) {
+      chosenMetrics.value.push(metrics.value[index]);
+      metrics.value.splice(index, 1);
+    } else {
+      metrics.value.push(chosenMetrics.value[0]);
+      chosenMetrics.value.shift();
+      chosenMetrics.value.push(metrics.value[index]);
+      metrics.value.splice(index, 1);
+    }
+  } else if (fromColumn === 2 && toColumn === 1) {
+    metrics.value.push(chosenMetrics.value[index]);
+    chosenMetrics.value.splice(index, 1);
+  }
+};
 </script>
 
 <style scoped>
