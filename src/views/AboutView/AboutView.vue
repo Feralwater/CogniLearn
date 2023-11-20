@@ -15,14 +15,14 @@
         <v-row>
           <v-col>
             <!-- First Column -->
-            <div class="column" @dragover.prevent @drop="dropHandler(1)">
+            <div class="column" @dragover.prevent @drop="dropHandler(1, $event)">
               <h3 class="column-header">Healthcare Triad Metrics</h3>
               <div
                 class="card"
                 v-for="(metric, index) in metrics"
                 :key="index"
                 draggable="true"
-                @dragstart="dragStartHandler(index, 1)"
+                @dragstart="dragStartHandler(index, 1, $event)"
               >
                 {{ metric.name }}
               </div>
@@ -31,15 +31,15 @@
 
           <v-col>
             <!-- Second Column -->
-            <div class="column" @dragover.prevent @drop="dropHandler(2)">
+            <div class="column" @dragover.prevent @drop="dropHandler(2, $event)">
               <h3 class="column-header">Choose Metrics for yourself</h3>
               <div
                 class="card"
                 v-for="(metric, index) in chosenMetrics"
                 :key="index"
                 draggable="true"
-                @dragstart="dragStartHandler(index, 2)"
-              >
+                @dragstart="dragStartHandler(index, 2, $event)"
+                  >
                 {{ metric.name }}
               </div>
             </div>
@@ -106,13 +106,12 @@ const userChoice = computed(() => {
   return chosenMetrics.value.length ? `${chosen}, but not ${notChosen}` : "nothing";
 });
 
-const dragStartHandler = (index: number, column: number) => {
-  event.dataTransfer.setData("text/plain", index + "-" + column);
+const dragStartHandler = (index: number, column: number, event: DragEvent) => {
+  event.dataTransfer?.setData("text/plain", index + "-" + column);
 };
 
-const dropHandler = (toColumn: number) => {
-  // Get data from the transfer and split it into index and column
-  const data = event.dataTransfer.getData("text/plain").split("-");
+const dropHandler = (toColumn: number, event: DragEvent) => {
+  const data = event.dataTransfer?.getData("text/plain").split("-") ?? [];
   const index = parseInt(data[0]);
   const fromColumn = parseInt(data[1]);
 
