@@ -1,5 +1,5 @@
 <template>
-  <v-container class="about">
+  <v-container class="container">
     <v-row>
       <v-col>
         <h1 class="heading">Welcome to Our Mental Health Clinics</h1>
@@ -9,6 +9,47 @@
           life's challenges and find the balance you seek. Trust our caring "mind masters" to guide you on your journey
           to better mental health.
         </p>
+        <v-col>
+          <h2 class="heading2">We provide the best care</h2>
+        </v-col>
+        <v-row>
+          <v-col>
+            <!-- First Column -->
+            <div class="column" @dragover.prevent @drop="dropHandler(1, $event)">
+              <h3 class="column-header">Healthcare Triad Metrics</h3>
+              <div
+                class="card"
+                v-for="(metric, index) in metrics"
+                :key="index"
+                draggable="true"
+                @dragstart="dragStartHandler(index, 1, $event)"
+              >
+                {{ metric.name }}
+              </div>
+            </div>
+          </v-col>
+
+          <v-col>
+            <!-- Second Column -->
+            <div class="column" @dragover.prevent @drop="dropHandler(2, $event)">
+              <h3 class="column-header">Choose Metrics for yourself</h3>
+              <div
+                class="card"
+                v-for="(metric, index) in chosenMetrics"
+                :key="index"
+                draggable="true"
+                @dragstart="dragStartHandler(index, 2, $event)"
+              >
+                {{ metric.name }}
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+        <v-col>
+          <div class="userChoice">
+            You have chosen: {{ userChoice }}
+          </div>
+        </v-col>
       </v-col>
       <v-col>
         <v-card min-width="288px">
@@ -44,7 +85,52 @@
 </template>
 
 <script setup lang="ts">
+interface Metric {
+  name: string;
+}
+
 import director from "@/assets/images/director/director.png";
+import { computed, ref } from "vue";
+
+const metrics = ref<Array<Metric>>([
+  { name: "Fast" },
+  { name: "Cheap" },
+  { name: "Good" }
+]);
+
+const chosenMetrics = ref<Array<Metric>>([]);
+
+const userChoice = computed(() => {
+  const chosen = chosenMetrics.value.map((metric) => metric.name).join(", ");
+  const notChosen = metrics.value.map((metric) => metric.name).join(" and ");
+  return chosenMetrics.value.length ? `${chosen}, but not ${notChosen}` : "nothing";
+});
+
+const dragStartHandler = (index: number, column: number, event: DragEvent) => {
+  event.dataTransfer?.setData("text/plain", index + "-" + column);
+};
+
+const dropHandler = (toColumn: number, event: DragEvent) => {
+  const data = event.dataTransfer?.getData("text/plain").split("-") ?? [];
+  const index = parseInt(data[0]);
+  const fromColumn = parseInt(data[1]);
+
+
+  if (fromColumn === 1 && toColumn === 2 && chosenMetrics.value.length < 2) {
+    chosenMetrics.value.push(metrics.value[index]);
+    metrics.value.splice(index, 1);
+  }
+  if (fromColumn === 1 && toColumn === 2) {
+    metrics.value.push(chosenMetrics.value[0]);
+    chosenMetrics.value.shift();
+    chosenMetrics.value.push(metrics.value[index]);
+    metrics.value.splice(index, 1);
+  }
+  if (fromColumn === 2 && toColumn === 1) {
+    metrics.value.push(chosenMetrics.value[index]);
+    chosenMetrics.value.splice(index, 1);
+  }
+};
 </script>
 
 <style scoped>
