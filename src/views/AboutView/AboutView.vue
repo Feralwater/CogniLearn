@@ -9,8 +9,10 @@
           life's challenges and find the balance you seek. Trust our caring "mind masters" to guide you on your journey
           to better mental health.
         </p>
+        <v-col>
+          <h2 class="heading2">We provide the best care</h2>
+        </v-col>
         <v-row>
-          <h2>We provide the best care</h2>
           <v-col>
             <!-- First Column -->
             <div class="column" @dragover.prevent @drop="dropHandler(1)">
@@ -78,16 +80,20 @@
 </template>
 
 <script setup lang="ts">
+interface Metric {
+  name: string;
+}
+
 import director from "@/assets/images/director/director.png";
 import { ref } from "vue";
 
-const metrics = ref([
+const metrics = ref<Array<Metric>>([
   { name: "Fast" },
   { name: "Cheap" },
   { name: "Good" }
 ]);
 
-const chosenMetrics = ref([]);
+const chosenMetrics = ref<Array<Metric>>([]);
 
 const dragStartHandler = (index: number, column: number) => {
   event.dataTransfer.setData("text/plain", index + "-" + column);
