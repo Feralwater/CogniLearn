@@ -39,7 +39,7 @@
                 :key="index"
                 draggable="true"
                 @dragstart="dragStartHandler(index, 2, $event)"
-                  >
+              >
                 {{ metric.name }}
               </div>
             </div>
@@ -116,17 +116,17 @@ const dropHandler = (toColumn: number, event: DragEvent) => {
   const fromColumn = parseInt(data[1]);
 
 
+  if (fromColumn === 1 && toColumn === 2 && chosenMetrics.value.length < 2) {
+    chosenMetrics.value.push(metrics.value[index]);
+    metrics.value.splice(index, 1);
+  }
   if (fromColumn === 1 && toColumn === 2) {
-    if (chosenMetrics.value.length < 2) {
-      chosenMetrics.value.push(metrics.value[index]);
-      metrics.value.splice(index, 1);
-    } else {
-      metrics.value.push(chosenMetrics.value[0]);
-      chosenMetrics.value.shift();
-      chosenMetrics.value.push(metrics.value[index]);
-      metrics.value.splice(index, 1);
-    }
-  } else if (fromColumn === 2 && toColumn === 1) {
+    metrics.value.push(chosenMetrics.value[0]);
+    chosenMetrics.value.shift();
+    chosenMetrics.value.push(metrics.value[index]);
+    metrics.value.splice(index, 1);
+  }
+  if (fromColumn === 2 && toColumn === 1) {
     metrics.value.push(chosenMetrics.value[index]);
     chosenMetrics.value.splice(index, 1);
   }
