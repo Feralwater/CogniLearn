@@ -1,5 +1,5 @@
 <template>
-  <v-container class="about">
+  <v-container class="container">
     <v-row>
       <v-col>
         <h1 class="heading">Welcome to Our Mental Health Clinics</h1>
