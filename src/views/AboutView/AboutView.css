@@ -58,6 +58,15 @@
   border-radius: 4px;
 }
 
+.userChoice {
+  background-color: var(--tertiary);
+  color: var(--secondary);
+  box-shadow: 0 4px 8px 0 var(--secondary-60);
+  padding: 15px 10px;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+
 @media screen and (max-width: 599px) {
   .heading {
     font-size: 18px;

@@ -19,12 +19,12 @@
               <h3 class="column-header">Healthcare Triad Metrics</h3>
               <div
                 class="card"
-                v-for="(member, index) in metrics"
+                v-for="(metric, index) in metrics"
                 :key="index"
                 draggable="true"
                 @dragstart="dragStartHandler(index, 1)"
               >
-                {{ member.name }}
+                {{ metric.name }}
               </div>
             </div>
           </v-col>
@@ -35,16 +35,21 @@
               <h3 class="column-header">Choose Metrics for yourself</h3>
               <div
                 class="card"
-                v-for="(member, index) in chosenMetrics"
+                v-for="(metric, index) in chosenMetrics"
                 :key="index"
                 draggable="true"
                 @dragstart="dragStartHandler(index, 2)"
               >
-                {{ member.name }}
+                {{ metric.name }}
               </div>
             </div>
           </v-col>
         </v-row>
+        <v-col>
+          <div class="userChoice">
+            You have chosen: {{ userChoice }}
+          </div>
+        </v-col>
       </v-col>
       <v-col>
         <v-card min-width="288px">
@@ -85,7 +90,7 @@ interface Metric {
 }
 
 import director from "@/assets/images/director/director.png";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const metrics = ref<Array<Metric>>([
   { name: "Fast" },
@@ -94,6 +99,12 @@ const metrics = ref<Array<Metric>>([
 ]);
 
 const chosenMetrics = ref<Array<Metric>>([]);
+
+const userChoice = computed(() => {
+  const chosen = chosenMetrics.value.map((metric) => metric.name).join(", ");
+  const notChosen = metrics.value.map((metric) => metric.name).join(" and ");
+  return chosenMetrics.value.length ? `${chosen}, but not ${notChosen}` : "nothing";
+});
 
 const dragStartHandler = (index: number, column: number) => {
   event.dataTransfer.setData("text/plain", index + "-" + column);
