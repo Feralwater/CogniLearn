@@ -3,6 +3,7 @@ import logo from "@/assets/icons/logo.svg";
 import mapPointer from "@/assets/icons/Map-Pointer.svg";
 import user from "@/assets/icons/user-spy.svg";
 import { useLoginStore } from "@/stores/login";
+import { Routes } from "@/router/routes";
 
 const loginStore = useLoginStore();
 </script>
@@ -36,9 +37,9 @@ const loginStore = useLoginStore();
           <span v-else>
               Hi, Guest!
             </span>
-          <div class="user">
+          <router-link :to="Routes.Profile" class="user">
             <v-img :src="user" class="user-icon" />
-          </div>
+          </router-link>
         </div>
       </div>
     </div>

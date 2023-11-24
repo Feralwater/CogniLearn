@@ -54,6 +54,11 @@ const router = createRouter({
       path: Routes.ReviewsId,
       name: 'reviewsId',
       component: () => import('@/views/ReviewView/ReviewView.vue')
+    },
+    {
+      path: Routes.Profile,
+      name: 'profile',
+      component: () => import('@/views/ProfileView/ProfileView.vue')
     }
   ]
 })
