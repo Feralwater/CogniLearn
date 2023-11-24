@@ -78,7 +78,7 @@
 }
 
 .user-icon {
-  :global(.v-img__img--contain){
+  :global(.v-img__img--contain) {
     width: 43px;
   }
 }
@@ -91,6 +91,10 @@
 
 @media screen and (max-width: 599px) {
   .mobile-hidden {
+    display: none;
+  }
+
+  .user {
     display: none;
   }
 
