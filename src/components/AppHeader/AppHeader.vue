@@ -37,7 +37,11 @@ const loginStore = useLoginStore();
           <span v-else>
               Hi, Guest!
             </span>
-          <router-link :to="Routes.Profile" class="user">
+          <router-link
+            :to="loginStore.isAuthenticated ? Routes.Profile : Routes.Login"
+            class="user"
+            :title="loginStore.isAuthenticated ? 'Go to profile' : 'Please login to see your profile'"
+          >
             <v-img :src="user" class="user-icon" />
           </router-link>
         </div>
