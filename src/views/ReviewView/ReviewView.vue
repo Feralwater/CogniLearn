@@ -2,12 +2,13 @@
 import router from "../../router";
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
 import { useReview } from "@/hooks/useReview";
+import { computed, ref } from "vue";
 
 const id = router.currentRoute.value.params.id as string;
 
 const { review, randomDoctor } = useReview(id);
-const rating = Math.floor(Math.random() * 5) + 1;
-const recommended = Math.floor(Math.random() * 100) + 1;
+const rating = ref(Math.floor(Math.random() * 5) + 1);
+const recommended = computed(() => rating.value * 20);
 
 </script>
 
@@ -15,7 +16,7 @@ const recommended = Math.floor(Math.random() * 100) + 1;
   <v-container class="container review-container">
     <v-row>
       <v-col>
-        <h1 class="doctor-name">Dr. Peter Parker</h1>
+        <h1 class="doctor-name">{{ randomDoctor.name }}</h1>
       </v-col>
     </v-row>
     <v-row>
