@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import router from "../../router";
 import RatingStars from "@/components/RatingStars/RatingStars.vue";
-import doctor from "@/assets/images/doctors/2.jpg";
 import { useReview } from "@/hooks/useReview";
 
 const id = router.currentRoute.value.params.id as string;
 
-const { review } = useReview(id);
+const { review, randomDoctor } = useReview(id);
+const rating = Math.floor(Math.random() * 5) + 1;
+const recommended = Math.floor(Math.random() * 100) + 1;
 
 </script>
 
@@ -19,18 +20,21 @@ const { review } = useReview(id);
     </v-row>
     <v-row>
       <v-col class="d-flex justify-lg-space-between mb-3">
-        <rating-stars :rating="Math.floor(Math.random() * 5) + 1" />
-        <p class="recommended-text">recommended by 84% of patients</p>
+        <rating-stars :rating="rating" />
+        <p :class="recommended > 50 ? 'recommended-text' : 'not-recommended-text'"
+        >
+          recommended by {{ recommended }}% of patients
+        </p>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="6" md="4">
-        <v-img :src="doctor" alt="Doctor Image" class="doctor-img" />
+        <v-img :src="randomDoctor.photo" :alt="randomDoctor.name" class="doctor-img" />
       </v-col>
       <v-col cols="6" md="8">
         <div class="review-details">
-          <p><strong class="label">Doctor:</strong> Dr. Peter Parker</p>
-          <p><strong class="label">Speciality:</strong> Psychotherapist</p>
+          <p><strong class="label">Doctor:</strong> {{ randomDoctor.name }}</p>
+          <p><strong class="label">Speciality:</strong> {{ randomDoctor.speciality }}</p>
           <p><strong class="label">Clinic:</strong> Hermes Medical Center, 33, 5th Avenue, New York, NY 10003
           </p>
         </div>
@@ -86,6 +90,11 @@ const { review } = useReview(id);
 
 .recommended-text {
   color: var(--success);
+  margin-left: 10px;
+}
+
+.not-recommended-text {
+  color: var(--important);
   margin-left: 10px;
 }
 
