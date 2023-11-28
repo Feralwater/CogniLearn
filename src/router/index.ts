@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView/HomeView.vue";
 import { Routes } from "@/router/routes";
-import { usePatientStore } from "@/stores/patient";
 import { useLoginStore } from "@/stores/login";
 
 const router = createRouter({
