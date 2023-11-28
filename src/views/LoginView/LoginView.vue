@@ -8,7 +8,7 @@
           Log in to your account to see your appointments and manage your
           profile.
         </p>
-        <v-form>
+        <v-form @submit.prevent="login">
           <v-text-field
             v-model.trim="loginStore.user"
             label="Your name"
@@ -17,14 +17,16 @@
             clearable
             persistent-clear
             :counter="20"
-            :rules="[v => !!v || 'Name is required',
-                      v => (v && v.length <= 20) || 'Name must be less than 20 characters']"
+            :rules="[
+              v => !!v || 'Name is required',
+              v => (v && v.length <= 20) || 'Name must be less than 20 characters',
+              ]"
           />
           <v-btn
             class="login-btn"
             :disabled="!valid"
             color="primary"
-            @click="login"
+            type="submit"
           >
             Login
           </v-btn>
