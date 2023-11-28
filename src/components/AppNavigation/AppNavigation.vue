@@ -4,10 +4,6 @@ import { useLoginStore } from "@/stores/login";
 
 const loginStore = useLoginStore();
 
-const logout = () => {
-  loginStore.logout();
-};
-
 const props = defineProps<{
   links: { text: string; route: string }[];
 }>();
@@ -23,9 +19,11 @@ const props = defineProps<{
       <v-list-item class="navigation-item">
         <router-link
           v-if="!loginStore.isAuthenticated"
-          :to="Routes.Login" class="navigation-link">Login
+          :to="Routes.Login" class="navigation-link"
+        >
+          Login
         </router-link>
-        <span v-else class="navigation-link" @click="logout">Logout</span>
+        <span v-else class="navigation-link" @click="loginStore.logout">Logout</span>
       </v-list-item>
     </v-list>
   </nav>
