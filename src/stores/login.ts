@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-
+import router from "@/router";
 export const useLoginStore = defineStore('login', {
   state: () => ({
     user: "",
@@ -15,6 +15,7 @@ export const useLoginStore = defineStore('login', {
     logout() {
       this.isAuthenticated = false;
       this.user = "";
+      router.push({ name: "login" });
     },
   },
 });

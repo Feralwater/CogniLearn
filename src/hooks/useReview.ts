@@ -1,9 +1,11 @@
 import { onMounted, ref } from "vue";
 import type { ServerReview } from "@/types/review";
 import axios from "axios";
+import { doctors } from "@/data/doctors";
 
 export const useReview = (id: string) => {
   const review = ref<ServerReview | null>(null);
+  const randomDoctor = doctors[Math.floor(Math.random() * doctors.length)];
 
   const fetchReview = async () => {
     try {
@@ -17,6 +19,7 @@ export const useReview = (id: string) => {
   onMounted(fetchReview);
 
   return {
-    review
+    review,
+    randomDoctor,
   };
 };
