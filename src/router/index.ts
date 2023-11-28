@@ -60,13 +60,10 @@ const router = createRouter({
       path: Routes.Profile,
       name: "profile",
       component: () => import("@/views/ProfileView/ProfileView.vue"),
-      meta: {
-        requiresAuth: true
-      },
-      beforeEnter: (to) => {
+      beforeEnter: () => {
         const { isAuthenticated } = useLoginStore();
 
-        if (to.meta.requiresAuth && !isAuthenticated) {
+        if (!isAuthenticated) {
           return {
             name: "login"
           };
