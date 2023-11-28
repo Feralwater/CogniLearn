@@ -38,7 +38,7 @@ const loginStore = useLoginStore();
               Hi, Guest!
             </span>
           <router-link
-            :to="loginStore.isAuthenticated ? Routes.Profile : Routes.Login"
+            :to="Routes.Profile"
             class="user"
             :title="loginStore.isAuthenticated ? 'Go to profile' : 'Please login to see your profile'"
           >

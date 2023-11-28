@@ -25,7 +25,8 @@
             :disabled="!valid"
             color="primary"
             @click="login"
-          >Login
+          >
+            Login
           </v-btn>
         </v-form>
       </div>
@@ -46,7 +47,7 @@ export default {
 
     const login = () => {
       loginStore.login(loginStore.user);
-      router.push(Routes.Home);
+      router.push(Routes.Profile);
     };
     return {
       loginStore,
