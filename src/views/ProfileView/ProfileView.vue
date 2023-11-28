@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { useLoginStore } from '@/stores/login';
 
+const {user} = useLoginStore();
 </script>
 
 <template>
-  <div class="container">
-    <h1>ProfileView</h1>
-  </div>
+  <v-container class="container">
+    <h1>{{ user }}</h1>
+  </v-container>
 </template>
 
 <style scoped>
